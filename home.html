@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/MotionPathPlugin.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josy's</title>
+    <style>
+
+           /* Désactiver le défilement horizontal */
+     
+
+/*fin serpent*/
+
+body {
+            margin: 0;
+            height: 10000px; /* Hauteur fixe de la page */
+            overflow-y: auto; /* Activer la barre de défilement si le contenu dépasse */
+            background: #121212;
+            overflow-x: hidden;
+            /*display: flex;
+            flex-wrap: wrap;*/
+           /* flex-direction: column;
+            align-items: center;*/
+            /*height: 2000vh; /* Increase the height to make scrolling possible */
+}
+ 
+        /*histoire josy */
+        .box_histoire_1 {
+            position: absolute;
+            width: 450px;
+            height: 125px;
+            top: 100vh;
+            left: 15vw;
+            background-color: transparent; 
+            padding: 5px; /* Ajoute une marge intérieure */
+            color: white;
+           /* border: 4px solid violet;*/
+            overflow-x: hidden;
+           /* transform: translate(-50%, -50%);*/
+            text-align: justify; /* Justifie le texte */
+            font-size: 20px;
+            border-radius: 20px;
+            transform-origin: bottom left; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+        .box_histoire_2 {
+            position: absolute;
+            width: 240px;
+            height: 300px;
+            top: 85vh;
+            left: 60vw;
+            background-color: white;
+            padding: 20px; /* Ajoute une marge intérieure */
+            color: black;
+            border: 4px solid violet;
+           /* transform: translate(-50%, -50%);*/
+            text-align: justify; /* Justifie le texte */
+            font-size: 19px;
+            border-radius: 20px;
+            transform-origin: bottom right; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+        .box_histoire_3 {
+            position: absolute;
+            width: 240px;
+            height: 295px;
+            top: 165vh;
+            left: 72vw;
+            background-color: white;
+            padding: 20px; /* Ajoute une marge intérieure */
+            color: black;
+            border: 4px solid violet;
+           /* transform: translate(-50%, -50%);*/
+            text-align: justify; /* Justifie le texte */
+            font-size: 19px;
+            border-radius: 20px;
+            transform-origin: top left; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+        .box_histoire_4 {
+            position: absolute;
+            width: 240px;
+            height: 300px;
+            top: 125vh;
+            left: 10vw;
+            background-color: white;
+            padding: 20px; /* Ajoute une marge intérieure */
+            color: black;
+            border: 4px solid violet;
+           /* transform: translate(-50%, -50%);*/
+            text-align: justify; /* Justifie le texte */
+            font-size: 19px;
+            border-radius: 20px;
+            transform-origin: bottom right; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+        .box_histoire_5 {
+            position: absolute;
+            width: 240px;
+            height: 260px;
+            top: 205vh;
+            left: 18vw;
+            background-color: white;
+            padding: 20px; /* Ajoute une marge intérieure */
+            color: black;
+            border: 4px solid violet;
+           /* transform: translate(-50%, -50%);*/
+            text-align: justify; /* Justifie le texte */
+            font-size: 19px;
+            border-radius: 20px;
+            transform-origin: bottom right; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+
+        .box_histoire_6 {
+            position: absolute;
+            width: 800px;
+            height: 35px;
+            top: 250vh;
+            left: 20vw;
+            background-color: white;
+            padding: 2px; /* Ajoute une marge intérieure */
+            color: black;
+            border: 4px solid violet;
+            transform: translate(-50%, -50%);
+            text-align: justify; /* Justifie le texte */
+            font-size: 19px;
+            border-radius: 20px;
+            transform-origin: center center; /* Origine de transformation en bas à gauche */
+            transform: scale(0); /* Réduit la taille à zéro au début */
+            opacity: 0;
+        }
+
+
+/*fin histoire*/
+
+/* Premier SVG : positionné en haut avec un décalage */
+#svg_histoire {
+  max-width: 95%; /* Limite la largeur maximale du SVG à celle de la fenêtre */
+  margin-top: 110vh;
+  height : 100vw;
+  width: 95%;
+  overflow-x: hidden;
+  left: 0%;
+  opacity: 0;
+}
+
+/* Balles et lignes du SVG */
+.ball {
+  fill: white;
+  visibility: visible;
+  overflow-x: hidden;
+}
+
+.ball_ {
+  fill: #9400D3;
+  visibility: hidden;
+  overflow-x: hidden;
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+  stroke-dasharray: 0, 1000; /* Valeur initiale pour masquer le chemin */
+  transition: stroke-dasharray 0.2s ease-out;
+  overflow-x: hidden;
+}
+
+text {
+  fill: white;
+  font-size: 15px;
+  font-family: "Signika Negative", sans-serif;
+  visibility: hidden;
+  overflow-x: hidden;
+}
+
+ /* Barre noire en haut */
+.carree2 {
+  position: fixed;
+  opacity: 100%;
+  top: 5vh;
+  right: 0;
+  width: 100%;
+  height: 18vh;
+  background-color: #121212;
+  display: flex;
+  cursor: pointer;
+}
+
+/*fin chemin */
+
+/* deco */
+
+      
+
+/* CSS pour la page noire */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.vertical-noir {
+    width: 30vw;
+    height: 40vh;
+    left: 0%;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 0vh;
+    left: 30%;
+    background-color: white;
+    position: absolute;
+}
+
+.intro-image {
+    min-width: 200px;
+    width: 30vw; /* Initialement cachée */
+    opacity: 1; /* Initialement invisible */
+    left: -20%;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+/* CSS du modal */
+#modal-container_carte {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  transform: scale(0);
+  z-index: 2001;
+}
+
+#modal-container_carte.four {
+  z-index: 2001;
+  transform: scale(1);
+}
+
+#modal-container_carte.four .modal-background_carte {
+  background: rgba(0, 0, 0, .7);
+}
+
+#modal-container_carte.four .modal_carte {
+  animation: blowUpModal .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+#modal-container_carte.four + .content {
+  z-index: 1;
+  animation: blowUpContent .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+#modal-container_carte.out .modal-background_carte .modal_carte {
+  animation: blowUpModalTwo .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+#modal-container_carte.out + .content {
+  animation: blowUpContentTwo .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.modal-background_carte {
+  display: table-cell;
+  background: rgba(0, 0, 0, .8);
+  width: 100vw;  /* Largeur du modal en fonction de la taille de la fenêtre */
+  height: 100vh;  /* Hauteur du modal en fonction de la taille de la fenêtre */
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modal_carte {
+  background: white;
+  padding: 10px;
+  top: 0vh;
+  left: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-weight: 300;
+  position: fixed;
+  max-width: 90%;  /* Augmente la largeur maximale */
+  width: 70vw;  /* Largeur du modal en fonction de la taille de la fenêtre */
+  height: 85vh;  /* Hauteur du modal en fonction de la taille de la fenêtre */
+  min-height: 85vh;
+
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}
+
+@keyframes blowUpContent {
+  0% {
+    transform:scale(1);
+    opacity:1;
+  }
+  99.9% {
+    transform:scale(2);
+    opacity:0;
+  }
+  100% {
+    transform:scale(0);
+  }
+}
+
+@keyframes blowUpContentTwo {
+  0% {
+    transform:scale(2);
+    opacity:0;
+  }
+  100% {
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+@keyframes blowUpModal {
+  0% {
+    transform:scale(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
+
+@keyframes blowUpModalTwo {
+  0% {
+    transform:scale(1);
+    opacity:1;
+  }
+  100% {
+    transform:scale(0);
+    opacity:0;
+  }
+}
+
+
+/*tttttt*/
+
+#modal-container {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 2001;
+}
+
+#modal-container.one {
+  transform: scaleY(0.01) scaleX(0);
+  animation: unfoldIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  .modal-background .modal {
+    transform: scale(0);
+    animation: zoomIn 0.3s 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+    p {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typeWriter 2s steps(40) forwards;
+    }
+  }
+}
+
+#modal-container.out {
+  transform: scale(1);
+  animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  .modal-background .modal {
+    animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+}
+
+.modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modal {
+  background: white;
+  padding: 50px;
+  height: 300px;
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: 300;
+  position: relative;
+}
+
+.modal h2 {
+  font-size: 25px;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+
+.modal p {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.modal .buttone {
+  display: inline-block;
+  text-align: center;
+  padding: 6px 20px;
+  margin: 10px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 3000;
+  opacity: 1;
+  &:hover {
+    background-color: #9400D3;
+    color: white;
+  }
+}
+
+.modal input[type="text"], .modal button {
+            margin-top: 20px; /* Augmenté pour espacement */
+            z-index: 99000; /* Index élevé pour assurer la visibilité */
+            position: relative; /* Pour gérer le z-index */
+        }
+        .modal button {
+            background-color: #6a5acd; /* Violet */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 99000; /* Index élevé pour assurer la visibilité */
+            position: relative; /* Pour gérer le z-index */
+        }
+.modal button:hover {
+            background-color: #8a2be2; /* Violet plus foncé au survol */
+}
+
+.modal .modal-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+
+  rect {
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 778;
+    stroke-dashoffset: 778;
+  }
+}
+
+@keyframes typeWriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+
+  .buttons {
+    max-width:800px;
+    margin:0 auto;
+    padding:0;
+    text-align:center;
+    .button {
+    position: fixed; /* Position fixe pour l'image */ 
+      display:inline-block;
+      text-align:center;
+      padding:6px 1vw;
+      margin:1vw;
+      top: 25vw; /* Placer l'image à 180px du haut */
+      left: 19.1%; /* Centrer l'image horizontalement */
+      font-size:1.5vw;
+      background-color: black; /* Couleur de fond noire */
+      color: white; /* Couleur du texte blanc */
+      border: 2px solid white; /* Contour blanc de 2 pixels */
+      border-radius:8px;
+      box-shadow:0 1px 2px rgba(0,0,0,.3);
+      transform: translate(-50%, -50%);
+      z-index: 2000;
+      cursor:pointer;
+      &:hover {
+        color:white;
+        background:#9400D3;
+      }
+    }
+  } 
+
+  .button_carte {
+    position: fixed; /* Position fixe pour l'image */ 
+      display:inline-block;
+      text-align:center;
+      padding:6px 10px;
+      margin:10px;
+      top: 85%; /* Placer l'image à 180px du haut */
+      left: 50%; /* Centrer l'image horizontalement */
+      font-size:18px;
+      background-color: black; /* Couleur de fond noire */
+      color: rgb(79, 199, 255); /* Couleur du texte blanc */
+      border: 2px solid rgb(0, 0, 0); /* Contour blanc de 2 pixels */
+      border-radius:8px;
+      transform: translate(-50%, -50%);
+      z-index: 2000;
+      opacity: 0;
+      cursor:pointer;
+      &:hover {
+        /*color:#9400D3;*/
+        text-decoration: underline;
+
+      }
+    }
+
+@keyframes unfoldIn {
+  0% {
+    transform:scaleY(.005) scaleX(0);
+  }
+  50% {
+    transform:scaleY(.005) scaleX(1);
+  }
+  100% {
+    transform:scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes unfoldOut {
+  0% {
+    transform:scaleY(1) scaleX(1);
+  }
+  50% {
+    transform:scaleY(.005) scaleX(1);
+  }
+  100% {
+    transform:scaleY(.005) scaleX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform:scale(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform:scale(1);
+  }
+  100% {
+    transform:scale(0);
+  }
+}
+
+
+/*FINNNNN*/
+
+                /*barre de défilement supprimé*/
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px;
+        }
+                /*fin barre de défilement supprimé*/
+
+
+
+        /* Styles pour la barre de défilement personnalisée */
+        .scroll-bar-container {
+        position: fixed;
+        right: 10px;
+        top: 90px; /* Marge en haut */
+        bottom: 60px; /* Marge en bas */
+        width: 5px; /* Largeur de la barre de défilement */
+        background-color:#9400D3; /* Couleur violette */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        border-radius: 10px; /* Arrondir toute la barre de défilement */
+        z-index: 9998;
+        }
+
+
+        .scroll-bar {
+            width: 100%; /* Largeur maximale pour la barre de progression */
+            height: 0%; /* Hauteur initiale de la barre de progression */
+            background-color:  #ddd; /* Couleur de fond gris */
+            transition: height 0.2s; /* Transition pour la progression */
+            border-radius: 10px 10px 10px 10px; /* Arrondir le haut et le bas de la barre de progression */
+        }  
+        
+        
+        .scroll-point {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #f2d3ff; /* Couleur des points (tomate) */
+            opacity: 0; /* Points initialement invisibles */
+            transition: opacity 0.2s; /* Transition pour l'opacité */
+            cursor: pointer;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            right: 19px; /* Positionnement à droite des points */
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .scroll-point:hover .tooltip {
+            display: block;
+        }
+
+
+        #scroll-position {
+            opacity : 100%;
+            position: fixed;
+            font-family: 'Poppins';
+            transform: translate(-50%, -50%); /* Centrer l'image horizontalement et verticalement */
+            top: 10px;
+            right: 50%;
+            background-color: rgba(205, 255, 255, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 9998;
+        }
+
+
+
+        .carree {
+            position: fixed;
+            opacity : 100%;
+            top: 16px;
+            right: 0px;
+            width: 40px;
+            height: 35px;
+            background-color: #121212;
+            display: flex;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            opacity : 100%;
+            top: 16px;
+            right: 10px;
+            width: 25px;
+            height: 35px;
+            background-color:#121212;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .menu-toggle div {
+            width: 20px;
+            height: 2px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.4s;
+            z-index: 1002;
+        }
+
+        /* Style pour la navigation */
+        .nav-buttons {
+            display: flex;
+            position: fixed;
+            top: 20px;
+            right: 50px;
+            flex-direction: row-reverse;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-buttons button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color:#121212;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: transform 1.0s, opacity 0.8s;
+            position: relative;
+            transform: translateX(100px); /* Initialement placé à droite du bouton principal */
+            opacity: 0; /* Initialement invisible */
+            visibility: hidden; /* Cache les boutons initialement */
+        }
+
+        .nav-buttons button:hover {
+            background-color: #9400D3;
+        }
+
+        /* Quand le menu est affiché */
+        .show-menu .nav-buttons button {
+            transform: translateX(0); /* Déplacement vers la position finale */
+            opacity: 1; /* Devenir visible */
+            visibility: visible; /* Rend les boutons visibles */
+        }
+
+        /* Ajout des délais de transition */
+        .show-menu .nav-buttons button:nth-child(1) {
+            transition-delay: 0.15s;
+        }
+        .show-menu .nav-buttons button:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+        .show-menu .nav-buttons button:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+        .show-menu .nav-buttons button:nth-child(4) {
+            transition-delay: 0.45s;
+        }
+        .show-menu .nav-buttons button:nth-child(5) {
+            transition-delay: 0.55s;
+        }
+
+/* Disparition avec des délais inversés */
+.hide-menu .nav-buttons button:nth-child(1) {
+    transition-delay: 0.55s;
+}
+.hide-menu .nav-buttons button:nth-child(2) {
+    transition-delay: 0.45s;
+}
+.hide-menu .nav-buttons button:nth-child(3) {
+    transition-delay: 0.35s;
+}
+.hide-menu .nav-buttons button:nth-child(4) {
+    transition-delay: 0.25s;
+}
+.hide-menu .nav-buttons button:nth-child(5) {
+    transition-delay: 0.15s;
+}
+
+        /* Media query pour mobile */
+@media (max-width: 600px) {
+    .nav-buttons {
+        flex-direction: column; /* Les boutons seront empilés verticalement */
+        right: 20px; /* Ajuste la position à droite */
+        top: 50px; /* Ajuste la position en haut */
+    }
+
+    .nav-buttons button {
+        margin: 5px 0; /* Plus d'espace entre les boutons verticalement */
+        transform: translateY(100px); /* Initialement placé en dessous du bouton principal */
+    }
+
+    .show-menu .nav-buttons button {
+        transform: translateY(0); /* Déplacement vers la position finale verticale */
+    }
+
+}
+
+        /* Section Instagram */
+        .instagram-section {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .instagram-section img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        /* Barre de navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 1; /* Devenir visible */
+            background-color:#121212; /* rgba(0, 0, 0, 0); /* Fond transparent avec 50% d'opacité */
+            padding: 0px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9997;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+		/*
+		.navbar-right {
+		    position: absolute;
+		    top: 40%;
+		    right: 20px;
+		    transform: translateY(-50%);
+		    
+		}
+
+        /*.navbar .boutique-btn {
+            margin-right: 10;
+            border: 2px solid violet; /* Ajout de la bordure violette 
+            border-radius: 20%;
+            padding: 5px;
+
+        }
+        */
+
+	*{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0px;
+      /* background: transparent;*/
+    }
+
+    @font-face {
+    font-family: 'Warsaw Gothic';
+    src: url('../fonts/WarsawGothic3D.woff2') format('woff2'),
+    url('../fonts/WarsawGothic3D.woff') format('woff'),
+    url('../fonts/WarsawGothic3D.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.woff2') format('woff2'),
+    url('../fonts/Poppins-Medium.woff') format('woff'),
+    url('../fonts/Poppins-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+ body2 {
+    background: #111;
+    background: transparent;
+    font-family: 'Warsaw Gothic', sans-serif;
+    margin-top: -50px;
+}
+
+    /* Verticale */
+    .slider-container2 {
+      max-width: 400px;
+      height: 145px;
+      margin-top: -62px; /*monter descendre tout scroll*/
+      overflow: hidden;
+      border: none;
+      background: transparent;
+    }
+
+    .slider2 {
+      height: 100%;
+      animation: slider2 20s infinite ease-in-out;
+    }
+
+    .slider2 p {
+      flex-shrink: 0;
+      padding: 72.5px 0; /*ecart scroll*/
+      width: 100%;
+      text-align: left;
+      font-size: 45px;
+      color: #f1f1f1;
+         margin-left: 107px; /* Décaler le texte de 100px vers la droite */
+          letter-spacing: 2px; /* Ajout de l'espace entre les lettres */
+        }
+
+
+    .slider2 p {
+      max-width: 100%;
+      max-height: 50%;
+      object-fit: contain;
+    }
+    
+    .image2{
+        position: fixed; /* Position fixe pour l'image */
+        top : -17px;
+            /*width: 40%; /* Taille de l'image à 40% */
+        width: 108px; /* Taille de l'image à 200px */
+        opacity: 100; /* L'image est initialement invisible */
+        transition: opacity 0.5s ease; /* Transition d'opacité */
+        }
+
+@keyframes slider2 {
+  0%, 5% {
+    transform: translateY(0);
+  }
+  10%, 15% {
+    transform: translateY(-100%);
+  }
+  20%, 25% {
+    transform: translateY(-200%);
+  }
+  30%, 35% {
+    transform: translateY(-300%);
+  }
+  40%, 45% {
+    transform: translateY(-400%);
+  }
+  50%, 55% {
+    transform: translateY(-500%);
+  }
+  60%, 65% {
+    transform: translateY(-600%);
+  }
+  70%, 75% {
+    transform: translateY(-700%);
+  }
+  80%, 85% {
+    transform: translateY(-800%);
+  }
+  90%, 95% {
+    transform: translateY(-900%);
+  }
+  100%, 105% {
+    transform: translateY(-1000%);
+  }
+  95%, 90% {
+    transform: translateY(-900%);
+  }
+  
+}
+        /*FIN Barre de navigation */
+
+        /* Styles spécifiques pour les appareils mobiles */
+        @media only screen and (max-width: 600px) {
+            .tel-section {
+
+            }
+            .pc-section {
+                display: none; /* Cacher la section pour les ordinateurs */
+            }
+        }
+
+        /* Styles spécifiques pour les ordinateurs */
+        @media only screen and (min-width: 601px) {
+            .tel-section {
+                display: none; /* Cacher la section pour les appareils mobiles */
+            }
+            .pc-section {
+
+        .text {
+            opacity: 1; /* Le texte est initialement visible */
+            transition: opacity 0.5s ease;
+            position: fixed; /* Position fixe pour les textes */
+            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            
+        }
+        #text1 {
+            position: fixed; /* Position fixe pour les textes */
+            top: 22vw; /* Placer le texte par défaut à 500px vers le bas */    
+            left: 20%; /* Centrer l'image horizontalement */
+            color: white;
+            font-size:1.8vw;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        #JOSY_touch {
+            top: 120px; /* Placer le deuxième texte à 300px vers le bas */
+            text-align: center;
+            color: white;  
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+            transform: translate(-50%, -50%);
+            left: 45%; /* Placer les textes à 20px de la gauche */
+         
+        }
+
+        #txt_josy_histoire_amis {
+            position: fixed; /* Position fixe pour les textes */
+            left: 50%; /* Placer les textes à 20px de la gauche */
+            top: 140px; /* Placer le deuxième texte à 300px vers le bas */
+            transform: translate(-50%, -50%);
+            color: white;
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+         
+        }
+
+        #vous_josy {
+            position: fixed; /* Position fixe pour les textes */
+            left: 50%; /* Placer les textes à 20px de la gauche */
+            top: 140px; /* Placer le deuxième texte à 300px vers le bas */
+            transform: translate(-50%, -50%); /* Centrer l'image horizontalement et verticalement */
+            color: white;
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+         
+        }
+
+        #vous_josy_2 {
+            position: fixed; /* Position fixe pour les textes */
+            left: 50%; /* Placer les textes à 20px de la gauche */
+            top: 70%; /* Placer le deuxième texte à 300px vers le bas */
+            transform: translate(-50%, -50%); /* Centrer l'image horizontalement et verticalement */
+            color: white;
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+            width: auto;
+            font-size: 18px;
+         
+        }
+        
+        #text3 {
+            position: absolute; /* Position absolue pour le texte 3 */
+            top: 1300px; /* Placer le deuxième texte à 300px vers le bas */
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+            left: 400px; /* Placer les textes à 20px de la gauche */
+            color: white;
+       
+        }
+    
+
+        #descriptif_tshirt {
+            position: fixed; /* Position absolue pour le texte 3 */
+            top: 250px; /* Placer le deuxième texte à 300px vers le bas */
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+            left: 400px; /* Placer les textes à 20px de la gauche */
+            color: white;
+            font-size: 20px;
+       
+        }
+
+        #photodrone_text {
+            top: 30%; /* Placer le deuxième texte à 300px vers le bas */
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+            left: 3%; /* Placer les textes à 20px de la gauche */
+            width: 45vw;
+            color: white;
+            font-size: 25px;
+       
+        }
+
+        .photodrone {
+            position: fixed; /* Position fixe pour l'image */
+            overflow-x: hidden;
+            top: -20px; /* Placer l'image à 180px du haut */
+            right: 0vw; /*49.3%;  Centrer l'image horizontalement */
+            transform: translate(0%, 0%); /* Centrer l'image horizontalement et verticalement */
+            width: 105vw; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            transition: opacity 0.5s ease; /* Transition d'opacité */
+            cursor: pointer;
+            border-radius: 30px;
+            z-index: 1;
+        }
+
+
+        .image {
+            position: fixed; /* Position fixe pour l'image */
+            top: 80px; /* Placer l'image à 180px du haut */
+            left: 77%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 40%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            transition: opacity 0.5s ease; /* Transition d'opacité */
+        }
+
+
+            } 
+        }
+
+        
+
+		.T_shirt_Josy_1 {
+            position: fixed;
+            top: 27vh;
+            right: -4vw; /* Position initiale en dehors de l'écran à gauche */
+            width : 50vw; 
+            opacity: 0; /* L'image est initialement invisible */
+            transform: translateX(0) translateY(0); /*  transition: transform 1s ease-in-out;*/
+        }
+
+        .T_shirt_Josy_1_ {
+            position: fixed;
+            top: 30vh;
+            right: 25vw;
+            width : 50vw; 
+            opacity: 0; /* L'image est initialement invisible */
+            transform: translateX(-50) translateY(0); /*  transition: transform 1s ease-in-out;*/
+        }
+        
+        .T_shirt_Josy_2 {
+            position: fixed;
+            top: 30vh;
+            left: 40%; 
+            width: 55%; 
+            opacity: 0; /* L'image est initialement invisible */   
+            transform: translateX(0) translateY(0) rotate(0deg); /* Ajout de la rotation */
+       }
+        
+        .Pull_Josydole {
+            position: fixed;
+            top: 20%;
+            left: 22.5%; /* Position initiale en dehors de l'écran à gauche */
+            width: 55%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */   
+            transform: translateX(0) translateY(0) rotate(0deg); /* Ajout de la rotation */
+        }
+        
+        .Casquette_1 {
+            position: fixed;
+            top: 20%;
+            left: 35%; /* Position initiale en dehors de l'écran à gauche */
+            width: 25%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */   
+            transform: translateX(0) translateY(0) rotate(0deg); /* Ajout de la rotation */
+       }
+        
+        .T_shirt_Josyimaginaire {
+            position: fixed;
+            top: 30vh;
+            left: 5%; /* Position initiale en dehors de l'écran à gauche */
+            width: 55%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */   
+            transform: translateX(0) translateY(0) rotate(0deg); /* Ajout de la rotation */
+
+        }
+
+
+        .gallery2-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 80%; /* Ajustez la largeur selon vos besoins */
+            top: 25%;
+            left : 10%;
+            opacity: 1;
+            position: fixed;
+        }
+
+        .gallery2-wrapper {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .gallery2 {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 10px; /* Espacement entre les images */
+        }
+
+        .gallery2 img {
+            border: 3px solid black;
+            width: calc((100% - 30px) / 4); /* 4 images avec espace de 10px entre chaque */
+            flex-shrink: 0;
+        }
+
+        .gallery2-nav {
+            background: #121212;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .gallery2-nav.left {
+            left: 0;
+        }
+
+        .gallery2-nav.right {
+            right: 0;
+        }
+
+        .gallery2-nav:hover {
+            opacity: 1;
+        }
+
+
+        .contact_form {
+            position: absolute; /* Position absolue pour permettre l'utilisation de transform */
+            opacity: 0;
+            width: 80vw;
+            top: 50vh;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centre l'élément horizontalement et verticalement */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        .contact_form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+         /* Styles pour le pop-up */
+         .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            text-align: center;
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+   <!-- Page noire par-dessus le contenu principal -->
+    <div class="overlay" id="overlay">
+    <img src="images/Josy.png" alt="Image d'introduction" class="intro-image">
+    <div class="vertical-noir"></div>
+    <div class="vertical-line"></div>
+    </div>
+
+    <div class="common-section">
+    
+    <div class="brick">
+        
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">    
+    
+        </div>
+    
+        <script>
+
+    
+            // Ajoutez un gestionnaire d'événements pour réinitialiser l'opacité lorsque la page est au sommet du scroll
+            window.addEventListener('scroll', function() {
+                var text1 = document.getElementById('text1');
+                var text2 = document.getElementById('text2');
+                var txt_josy_histoire_amis = document.getElementById('txt_josy_histoire_amis');
+                var text3 = document.getElementById('text3');
+                var photodrone_text = document.getElementById('photodrone_text');
+                var descriptif_tshirt = document.getElementById('descriptif_tshirt');
+                
+                var image = document.querySelector('.image');
+                var one = document.querySelector('.one');
+                
+                var gallery = document.querySelector('.gallery');
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+             /*   var T_shirt_Josy_1 = document.querySelector('.T_shirt_Josy_1');
+                var T_shirt_Josy_1 = document.querySelector('.T_shirt_Josy_2');
+                var T_shirt_Josy_1 = document.querySelector('.Pull_Josydole');
+                var T_shirt_Josy_1 = document.querySelector('.Casquette_1');
+                var T_shirt_Josy_1 = document.querySelector('.T_shirt_Josyimaginaire');*/
+                            
+                
+                gsap.registerPlugin(ScrollTrigger);
+    
+                
+                if (scrollTop >= 0 && scrollTop <= 6400) {
+                photodrone_text.style.opacity = "1";
+                
+                } else {
+                photodrone_text.style.opacity = "0";
+                }
+
+                //Début
+                if (scrollTop <= 30) {
+                    text1.style.opacity = "1";
+                } else {
+                    text1.style.opacity = "0";
+                }
+                
+                if (scrollTop <= 31) {
+                    one.style.opacity = "1";
+                } else {
+                    one.style.opacity = "0";
+                }
+                
+                if (scrollTop >= 0 && scrollTop <= 35) {
+                    image.style.opacity = "1";
+                } else {
+                    image.style.opacity = "0";
+                }
+                
+                //galerie histoire josy
+    
+                if (scrollTop >= 180 && scrollTop <= 500) {
+                  txt_josy_histoire_amis.style.opacity = "1";
+                } else {
+                  txt_josy_histoire_amis.style.opacity = "0";
+                }
+    
+                //autres
+              
+                 
+                 if (scrollTop >= 1100 && scrollTop <= 2000) {
+                    text3.style.opacity = "0";
+                } else {
+                    text3.style.opacity = "0";
+                }
+                
+                if (scrollTop >= 5000 && scrollTop <= 5850) {
+                    descriptif_tshirt.style.opacity = "1";
+                } else {
+                    descriptif_tshirt.style.opacity = "0";
+                }
+            });
+            
+            
+        
+    //t shirt josy
+    gsap.fromTo(".T_shirt_Josy_1", {
+        x: 1500,
+        y: -500,
+        scale: 1 // Taille initiale à 100%
+    }, {
+        x: 1100,
+        y: -510, // Ajout de l'animation sur l'axe Y
+        scale: 1.1, // Grossissement de 10% (taille à 110%)
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "4200px",  // Démarre après la première animation
+            end: "4900px",    // Garde la position pendant 200px
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+    
+    
+    //FIN LEVÉE : 
+    gsap.fromTo(".T_shirt_Josy_1", {
+        x: 1100,
+        y: -510,
+        scale: 1.1 // Taille initiale à 100%
+    }, {
+        x: 1100,
+        y: -1510, // Ajout de l'animation sur l'axe Y
+        scale: 1.1, // Grossissement de 10% (taille à 110%)
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "5700px",  // Démarre après la première animation
+            end: "6300px",    // Garde la position pendant 200px
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+    
+    gsap.fromTo(".T_shirt_Josyimaginaire", {
+        x: 0,
+        y: -30,
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(-25deg)" // Ajout de la rotation initiale
+    }, {
+        x: 0,
+        y: -1100, 
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(-25deg)", // Ajout de la rotation finale
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "5700px",  // Démarre après la première animation
+            end: "6300px",    // Fin de l'animation à 5200px
+            scrub: 0,  
+            markers: false // Pour désactiver les repères de démarrage et de fin
+        }
+    });
+    
+    gsap.fromTo(".T_shirt_Josy_2", {
+        x: 0,
+        y: -30,
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(25deg)" // Ajout de la rotation initiale
+    }, {
+        x: 0,
+        y: -1100, 
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(25deg)", // Ajout de la rotation finale
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "5700px",  // Démarre après la première animation
+            end: "6300px",    // Fin de l'animation à 5200px
+            scrub: 0,  
+            markers: false // Pour désactiver les repères de démarrage et de fin
+        }
+    });
+    
+    //
+    
+    
+    //JOSYmaginaire
+    gsap.fromTo(".T_shirt_Josyimaginaire", {
+        opacity: 0
+    }, {
+        opacity: 1,
+        scrollTrigger: {
+            trigger: ".T_shirt_Josyimaginaire",
+            start: "5100px",
+            end: "5550px",
+            scrub: 0, 
+            markers: false
+        }
+    });
+    
+    gsap.fromTo(".T_shirt_Josyimaginaire", {
+        x: 220,
+        y: -30,
+        scale: 0.7,
+        transform: "translateX(0) translateY(0) rotate(0deg)" // Ajout de la rotation initiale
+    }, {
+        x: 0,
+        y: 0, // Pas de changement de position, seulement la rotation
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(-25deg)", // Ajout de la rotation finale
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "4950px",  // Démarre après la première animation
+            end: "5200px",    // Fin de l'animation à 5200px
+            scrub: 0,  
+            markers: false // Pour désactiver les repères de démarrage et de fin
+        }
+    });
+    
+    
+    //Josy 2
+    gsap.fromTo(".T_shirt_Josy_2", {
+        opacity: 0
+    }, {
+        opacity: 1,
+        scrollTrigger: {
+            trigger: ".T_shirt_Josyimaginaire",
+            start: "4949px",
+            end: "5550px",
+            scrub: 0, 
+            markers: false
+        }
+    });
+    
+    gsap.fromTo(".T_shirt_Josy_2", {
+        x: -220,
+        y: -30,
+        scale: 0.7,
+        transform: "translateX(0) translateY(0) rotate(0deg)" // Ajout de la rotation initiale
+    }, {
+        x: 0,
+        y: 0, // Pas de changement de position, seulement la rotation
+        scale: 1,
+        transform: "translateX(0) translateY(0) rotate(25deg)", // Ajout de la rotation finale
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "4950px",  // Démarre après la première animation
+            end: "5200px",    // Fin de l'animation à 5200px
+            scrub: 0,  
+            markers: false // Pour désactiver les repères de démarrage et de fin
+        }
+    });
+    
+    
+    gsap.fromTo(".T_shirt_Josy_1", {
+        opacity : 0
+    }, {
+        opacity : 1,
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "1000px top", // Déclenche à 2680px du haut de la page
+            end: "1800px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+    
+    gsap.fromTo(".T_shirt_Josy_1", {
+        x: 0,
+        y: 0,
+        scale: 1 // Taille initiale à 100%
+    }, {
+        x: 1500,
+        y: -500, // Ajout de l'animation sur l'axe Y
+        scrollTrigger: {
+            trigger: ".T_shirt_Josy_1",
+            start: "1000px top", // Déclenche à 2680px du haut de la page
+            end: "4000px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+
+    
+    
+     
+     //GSAP TEST
+
+     
+    
+    
+     //FIN GSAP
+    
+    //fin thsirt josy
+    
+
+    
+
+    //
+   
+    let sreen_largeur = window.innerWidth;
+
+    window.addEventListener('scroll', function() {
+        let scrollPosition = window.scrollY;
+        document.getElementById('scroll-position').textContent = `Pos: ${scrollPosition}px - Larg: ${sreen_largeur}`;
+    });
+    
+
+    window.addEventListener('resize', () => {
+        // Recalcule la largeur et met à jour la position x
+    sreen_largeur = window.innerWidth;
+      //  document.getElementById('scroll-position').textContent = `Scroll position: ${sreen_largeur}px`;
+
+    let scrollPosition = window.scrollY;
+
+        document.getElementById('scroll-position').textContent = `Pos: ${scrollPosition}px - Larg: ${sreen_largeur}`;
+
+    // Recharger la page
+   // location.reload();
+
+    /*window.scrollTo({
+        top: scrollPosition,
+       // behavior: 'smooth' // défilement fluide
+    });*/
+
+//fin refresh 
+    });
+
+            
+        </script>
+
+
+        <div class="instagram-section">
+    <a href="https://www.instagram.com/josy.family?igsh=bW94ZmZybWx3Ym4y&utm_source=qr" target="_blank">
+        <img src="https://static.wixstatic.com/media/091b9b_a9215b4d1c0a470aa70b99140a91aa22~mv2.png" alt="Instagram">
+    </a>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-left">
+                <!-- Votre code HTML existant -->
+                <body2>
+                    <!-- Vertical Slider -->
+                    <div class="slider-container2">
+                        <img src="images/Josy.png" class="image2" alt="Image">
+                        <div class="slider2" id="randomElements">
+                    </div>
+                </body2>
+    
+            </div>
+        </div>
+
+ <!-- Bouton pour le menu -->
+ <div class="menu-toggle" id="menuToggle">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="carree" id="carree"></div>
+
+<!-- Menu déroulant horizontal -->
+<div class="nav-buttons" id="navButtons">
+    <button onclick="scrollToPosition_8()">Nous contacter</button>
+    <button onclick="ToBoutique()">Boutique</button>
+    <button onclick="scrollToPosition_7()">La team Josy</button>
+    <button onclick="alert('Bouton 4 cliqué')">Nos produits</button>
+    <button onclick="alert('Bouton 5 cliqué')">Nous découvrir</button>
+</div>
+
+
+    <!-- Barre de défilement personnalisée -->
+    <div class="scroll-bar-container">
+        <div class="scroll-bar" id="scrollBar"></div>
+
+        <!-- Points avec info-bulles -->
+        <div class="scroll-point" id="point100"  style="top: calc(2% - 5px);" data-tooltip="Point à 100%">
+            <div class="tooltip">100 pixels de défilement</div>
+        </div>
+        <div class="scroll-point" onclick="scrollToPosition_2()" id="point200" style="top: calc(23% - 5px);" data-tooltip="Point à 200%">
+            <div class="tooltip">Josy touche !</div>
+        </div>
+        <div class="scroll-point" id="point300" style="top: calc(45% - 5px);" data-tooltip="Point à 300%">
+            <div class="tooltip">Descriptif T-shirt</div>
+        </div>
+        <div class="scroll-point" id="point400" style="top: calc(53% - 5px);" data-tooltip="Point à 400%">
+            <div class="tooltip">Qualité du T-shirt</div>
+        </div>
+        <div class="scroll-point" id="point500" style="top: calc(58% - 5px);" data-tooltip="Point à 500%">
+            <div class="tooltip">Les variantes...</div>
+        </div>
+        <div class="scroll-point" id="point600" style="top: calc(66% - 5px);" data-tooltip="Point à 600%">
+            <div class="tooltip">Galerie</div>
+        </div>
+        <div class="scroll-point" onclick="scrollToPosition_7()" id="point700" style="top: calc(70% - 5px);" data-tooltip="Point à 700%">
+            <div class="tooltip">La team Josy</div>
+        </div>
+        <div class="scroll-point" onclick="scrollToPosition_8()" id="point800" style="top: calc(76% - 5px);" data-tooltip="Point à 800%">
+            <div class="tooltip">Contact</div>
+        </div>
+        <div class="scroll-point" id="point900" style="top: calc(200% - 5px);" data-tooltip="Point à 900%">
+            <div class="tooltip">900 pixels de défilement</div>
+        </div>
+        <div class="scroll-point" id="point1000" style="top: calc(200% - 5px);" data-tooltip="Point à 1000%">
+            <div class="tooltip">1000 pixels de défilement</div>
+        </div>
+    </div>
+
+    <div id="scroll-position"></div>
+
+
+    </div>
+
+
+
+      <!-- Téléphone -->
+    <div class="tel-section">
+
+
+    </div>
+
+
+      <!-- Ordinateur -->
+    <div class="pc-section">
+
+
+        <!-- Section 1 -->        
+        <div class="brick">
+
+
+            <svg id="svg_histoire" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" style="width: 100%; height: auto;">
+                <!-- <path class="line01 line" d="M 10 200  600 200"></path>
+                 <path class="line02 line" d="M 10 400  600 400"></path>
+                 <path class="line03 line" d="M 10 600  600 600"></path>
+                 <path class="line04 line" d="M 10 800  600 800"></path>
+                 <text class="text01" x="30" y="190">2018</text>
+                 <text class="text02" x="30" y="390">2019</text>
+                 <text class="text03" x="30" y="590">2020</text> -->
+         
+                 <path id="theLine" class="theLine" 
+                 d="M -5,0
+                 Q 10 30 400 70 
+                 T 270 180
+                 Q -220 250 350 300
+                 T 30 450"
+                     fill="none" stroke="white" stroke-width="4px" />
+         
+                 <circle class="ball ball01" r="8"></circle>
+                 <circle class="ball_ ball02" r="5"></circle>
+                 <circle class="ball_ ball03" r="5"></circle>
+                 <circle class="ball_ ball04" r="5"></circle>
+            </svg>
+
+
+             <div class="box_histoire_1">
+                Il était une fois, dans un monde où la mode était sérieuse et les vêtements manquaient de fantaisie, trois amis décidèrent de changer la donne. Ils étaient animés par une idée simple mais puissante : faire rire les gens tout en les habillant avec style.
+            </div>
+
+            <div class="box_histoire_2">
+                Ainsi naquit Josy, une marque de vêtements drôle et décalée qui ne se prenait pas trop au sérieux. Les créateurs, trois esprits farfelus et amoureux des jeux de mots, s'inspirèrent des moments joyeux de la vie quotidienne pour donner vie à une collection unique.
+            </div>
+
+            <div class="box_histoire_3">
+                Chaque pièce de la collection Josy raconte une histoire, un jeu de mot ingénieux qui fusionne l'humour et la mode. De Josydole à Josyrlande, chaque création est un clin d'œil à la créativité sans limites de l'esprit humain.
+            </div>
+
+            <div class="box_histoire_4">
+                Les vêtements Josy sont conçus pour ceux qui refusent de se conformer, pour ceux qui aiment la mode, mais qui aiment encore plus rire. C'est une invitation à célébrer la vie avec légèreté, à ne jamais oublier que même la mode peut être une aventure amusante.
+            </div>
+
+            <div class="box_histoire_5">
+                Porter Josy, c'est plus qu'une déclaration de style, c'est un état d'esprit. Rejoignez-nous dans cette aventure où le rire est la tenue parfaite, où chaque vêtement est une punchline, et où la mode devient une fête.
+            </div>
+
+            <div class="box_histoire_6">
+                Josy - Parce que la vie est trop courte pour ne pas en rire, et la mode trop amusante pour être sérieuse.
+            </div>
+
+            <div class="carree2" id="carree2"></div>
+
+            <div class="text" id="text1">Des jeux pour tous</div>
+            <div class="text" id="txt_josy_histoire_amis">JOSY... une histoire d'amis</div>
+            <div class="text" id="JOSY_touch">La JOSY touch !</div>
+            <div class="text" id="text3">Dernier texte</div>
+      <div class="text" id="descriptif_tshirt">
+            <p>descriptif tshirt</p>
+            <p>...</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+        </div>
+        <div class="text" id="photodrone_text">
+            <p>bilan t-shirt........ ............... ............... ..................... .............. .............. ....... ................ .......... .............</p>
+            <p>ils sont trop bien</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+        </div>
+        <div class="text" id="vous_josy">Vous aussi, faites partie de la team JOSY</div>
+        <div class="text" id="vous_josy_2">JOSY ce n'est pas qu'une histoire de vêtements. C'est aussi une communauté, un partage, des rencontres.</div>
+             
+            
+             <img src="https://static.wixstatic.com/media/091b9b_91d58ba7da1d42ddac8a0515a1ba2d90~mv2.png" class="T_shirt_Josy_2" alt="Image">
+             <img src="https://static.wixstatic.com/media/091b9b_fec32b19ccf54130a2d3f1fef45d1e97~mv2.png" class="Pull_Josydole" alt="Image">
+             <img src="https://static.wixstatic.com/media/091b9b_3bdbfd96343041d48d7562b22539de94~mv2.png" class="T_shirt_Josyimaginaire" alt="Image">
+             <img src="https://static.wixstatic.com/media/091b9b_57b281e336cd450eb873f0aa2a6823c0~mv2.png" class="Casquette_1" alt="Image">
+             <img src="https://static.wixstatic.com/media/091b9b_e68f5e63f468436e8b418ed0e3388a70~mv2.png" class="T_shirt_Josy_1" alt="Image">
+             <img src="https://static.wixstatic.com/media/091b9b_e68f5e63f468436e8b418ed0e3388a70~mv2.png" class="T_shirt_Josy_1_" alt="Image">
+
+               
+
+
+
+<!-- Modal Container -->
+<div id="modal-container">
+    <div class="modal-background">
+      <div class="modal">
+        <h2>Le Josy Jeu</h2>
+        <p><span id="textContainer"></span></p>
+       <label for="motInput">Entrez un mot : JOSY</label>
+       <input type="text" id="motInput">
+       <br>
+       <button onclick="compterMot()">Valider</button>
+       <br>
+       <p id="resultat"></p>
+       <br>
+        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+          <rect x="0" y="0" fill="none" width="500" height="250" rx="3" ry="3"></rect>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+
+                 <div class="buttons">
+                <button onclick="startTyping()" id="one" class="button">Participer aux jeux</button> 
+                </div>
+
+                <button onclick="open_carte()" id="four" class="button_carte">Accéder à notre carte</button> 
+
+                <div id="typewriter-container"></div>
+
+
+      <div class="gallery2-container">
+        <button class="gallery2-nav left" onclick="scrollGallery(-1)">&#10094;</button> <!-- Flèche gauche -->
+        <div class="gallery2-wrapper">
+            <div class="gallery2">
+                <img src="https://via.placeholder.com/150" alt="Image 1">
+                <img src="https://via.placeholder.com/150" alt="Image 2">
+                <img src="https://via.placeholder.com/150" alt="Image 3">
+                <img src="https://via.placeholder.com/150" alt="Image 4">
+                <img src="https://via.placeholder.com/150" alt="Image 5">
+                <img src="https://via.placeholder.com/150" alt="Image 6">
+                <img src="https://via.placeholder.com/150" alt="Image 7">
+                <img src="https://via.placeholder.com/150" alt="Image 8">
+            </div>
+        </div>
+        <button class="gallery2-nav right" onclick="scrollGallery(1)">&#10095;</button> <!-- Flèche droite -->
+    </div>
+      
+
+    <div class="contact_form">
+        <h2>Formulaire de Contact</h2>
+        <form id="contactForm" method="POST" onsubmit="sendForm(event)">
+            <div class="form-group">
+                <label for="nom_prenom">Nom et Prénom :</label>
+                <input type="text" id="nom_prenom" name="nom_prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse e-mail :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="objet">Objet :</label>
+                <input type="text" id="objet" name="objet" required>
+            </div>
+            <div class="form-group">
+                <label for="sujet">Sujet :</label>
+                <textarea id="sujet" name="sujet" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Envoyer</button>
+            </div>
+            <div id="error" class="error"></div>
+        </form>
+    </div>
+
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup">
+            <button class="close-btn" onclick="closePopup()">x</button>
+            <p>Message envoyé avec succès!</p>
+        </div>
+    </div>
+    
+   
+     <!-- <img src="https://static.wixstatic.com/media/091b9b_2e7cbd6063454ce8ac19de96ca85d5ff~mv2.jpg" class="photodrone" alt="Image"> -->
+    <img src= '../Image/Josy - St barth 5.jpeg' class="photodrone" alt="Image">
+
+
+   <!-- Modal Container CARTE -->
+  <div id="modal-container_carte" class="modal-container_carte">
+    <div class="modal-background_carte">
+        <div class="modal_carte">
+            <button onclick="close_carte()" id="close-modal" class="close-button">&times;</button>
+            <h2>La JOSY carte</h2>
+            <img src="https://static.wixstatic.com/media/091b9b_f554d4edb0064081afbe17a631981ae2~mv2.png" alt="Modal Image" class="modal-image">
+            
+
+        </div>
+    </div>
+</div>
+
+        </div>
+
+       
+
+   
+    <div id="transitionOverlay" class="transition-overlay"></div>
+    
+
+        <script>
+
+
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+// Initialiser les balles à leur position initiale sur le chemin
+gsap.set(".ball", { opacity:  1});
+
+gsap.set(".ball02", {x:75, y:27});
+gsap.set(".ball03", {x:500, y:84});
+gsap.set(".ball04", {x:440, y:154});
+
+// Fonction pour imiter le dessin du chemin
+const path = document.querySelector("#theLine");
+const pathLength = path.getTotalLength();
+
+ // Appliquer strokeDasharray et strokeDashoffset pour le chemin
+gsap.set(path, {
+    strokeDasharray: pathLength,
+    strokeDashoffset: pathLength
+        });
+
+
+const pulses = gsap.timeline({
+    defaults: {
+        scale: 2,
+        autoAlpha: 1,
+        transformOrigin: 'center', 
+        ease: "elastic(2.5, 1)"
+    }
+})
+.to(".ball02, .text01", {}, 0.06) 
+.to(".ball03, .text02", {}, 0.46)
+.to(".ball04, .text03", {}, 0.70);
+
+const main = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#svg_histoire",
+                scrub: true,
+                start: "top 80%", // Adapter pour mieux synchroniser
+                end: "bottom 110%"
+            }
+        })
+.to(".ball01", {autoAlpha: 1, duration: 0.05})
+.to(".theLine", { strokeDashoffset: 0, duration: 4 }, 0) // Simule le dessin de la ligne
+.to(".ball01", {
+    motionPath: {
+        path: ".theLine",
+        align: ".theLine",
+        alignOrigin: [0.5, 0.5]
+    }, 
+    duration: 4
+}, 0)
+.add(pulses, 0);
+
+gsap.fromTo("#svg_histoire", {
+    opacity: 0
+}, {
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "210px",
+        end: "220px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+//fin chemin 
+
+
+//hisotire
+
+gsap.fromTo(".box_histoire_1", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    transformOrigin: "bottom left", // Origine de transformation en bas à gauche
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "256px",
+        end: "266px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+gsap.fromTo(".box_histoire_2", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    transformOrigin: "bottom right", // Origine de transformation en bas à gauche
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "416px",
+        end: "426px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+gsap.fromTo(".box_histoire_3", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    transformOrigin: "top left", // Origine de transformation en bas à gauche
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "509px",
+        end: "519px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+gsap.fromTo(".box_histoire_4", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    transformOrigin: "bottom right", // Origine de transformation en bas à gauche
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "646px",
+        end: "656px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+gsap.fromTo(".box_histoire_5", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    transformOrigin: "bottom right", // Origine de transformation en bas à gauche
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "810px",
+        end: "820px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+gsap.fromTo(".box_histoire_6", {
+    scaleX: 0,  // Réduit la largeur à zéro au début
+    scaleY: 0,  // Réduit la hauteur à zéro au début
+    opacity: 0
+}, {
+    scaleX: 1,  // Agrandit la largeur à sa taille originale
+    scaleY: 1,  // Agrandit la hauteur à sa taille originale
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body,
+        start: "1300px",
+        end: "1320px",
+        scrub: 0,
+        markers: false
+    }
+});
+
+  
+
+//fin histoire
+
+                // Ajoutez un gestionnaire d'événements pour réinitialiser l'opacité lorsque la page est au sommet du scroll
+     window.addEventListener('scroll', function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var text1 = document.getElementById('text1');
+            var text2 = document.getElementById('text2');
+            var txt_josy_histoire_amis = document.getElementById('txt_josy_histoire_amis');
+            var text3 = document.getElementById('text3');
+            var descriptif_tshirt = document.getElementById('descriptif_tshirt');
+            var photodrone_text = document.getElementById('photodrone_text');
+            
+            var one = document.querySelector('.buttons');
+            
+			var T_shirt_Josy_1 = document.querySelector('.T_shirt_Josy_1');
+            var T_shirt_Josy_1_ = document.querySelector('.T_shirt_Josy_1_');
+			var T_shirt_Josy_2 = document.querySelector('.T_shirt_Josy_2');
+			/*var T_shirt_Josy_1 = document.querySelector('.Pull_Josydole');
+			var T_shirt_Josy_1 = document.querySelector('.Casquette_1');*/
+			var T_shirt_Josyimaginaire = document.querySelector('.T_shirt_Josyimaginaire');
+
+            var photodrone = document.querySelector('.photodrone');
+						
+            
+            gsap.registerPlugin(ScrollTrigger);
+
+            
+            //Début
+            if (scrollTop <= 30) {
+                text1.style.opacity = "1";
+            } else {
+                text1.style.opacity = "0";
+            }
+            
+            if (scrollTop <= 31) {
+                one.style.opacity = "1";
+            } else {
+                one.style.opacity = "0";
+            }
+            
+            //galerie histoire josy
+
+            if (scrollTop >= 180 && scrollTop <= 1600) {
+              txt_josy_histoire_amis.style.opacity = "1";
+            } else {
+              txt_josy_histoire_amis.style.opacity = "0";
+            }
+            
+
+            //autres
+          
+             
+             if (scrollTop >= 1100 && scrollTop <= 2000) {
+                text3.style.opacity = "0";
+            } else {
+                text3.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 4200 && scrollTop <= 4500) {
+                descriptif_tshirt.style.opacity = "1";
+            } else {
+                descriptif_tshirt.style.opacity = "0";
+            }
+
+            if (scrollTop >= 4450 && scrollTop <= 6300) {
+                T_shirt_Josy_1_.style.opacity = "1";
+            } else {
+                T_shirt_Josy_1_.style.opacity = "0";
+            }
+
+            if (scrollTop >= 6480 && scrollTop <= 6800) {
+                vous_josy.style.opacity = "1";
+            } else {
+                vous_josy.style.opacity = "0";
+            }
+
+
+            if (scrollTop >= 6490 && scrollTop <= 6800) {
+                vous_josy_2.style.opacity = "1";
+            } else {
+                vous_josy_2.style.opacity = "0";
+            }
+
+            if (scrollTop >= 6500 && scrollTop <= 6800) {
+                four.style.opacity = "1";
+            } else {
+                four.style.opacity = "0";
+            }
+
+
+          /*  if (scrollTop >= 0 && scrollTop <= 85) {
+                photodrone.style.opacity = "1";
+                
+            } else {
+                photodrone.style.opacity = "0";
+            }*/
+
+            if (scrollTop >= 6000 && scrollTop <= 6400) {
+                photodrone_text.style.opacity = "1";
+                
+            } else {
+                photodrone_text.style.opacity = "0";
+            }
+
+            if (scrollTop >= 4900 && scrollTop <= 6300) {
+                T_shirt_Josy_2.style.opacity = "1";
+                T_shirt_Josyimaginaire.style.opacity = "1";
+            } else {
+                T_shirt_Josy_2.style.opacity = "0";
+                T_shirt_Josyimaginaire.style.opacity = "0";
+            }
+
+            if (scrollTop >= 6850 && scrollTop <= 8000) {
+                contact_form.style.opacity = "1";
+            } else {
+                contact_form.style.opacity = "0";
+            }
+            
+
+        });
+        
+        
+	
+//t shirt josy
+
+
+
+
+
+
+    gsap.fromTo(".T_shirt_Josy_1", {
+    x: 0,
+    y: 0,
+    opacity: 1 // Taille initiale à 100%
+}, {
+    x: 0,
+    y: 0, // Ajout de l'animation sur l'axe Y
+    opacity: 0, // Grossissement de 10% (taille à 110%)
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4449px",  // Démarre après la première animation
+        end: "4450px",    // Garde la position pendant 200px
+        scrub: 0,  
+        markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+    }
+});
+
+
+
+
+//FIN LEVÉE : 
+animation = gsap.fromTo(".T_shirt_Josy_1_", {
+    x: 0,
+    y: 0,
+    scale: 1.2 // Taille initiale à 100%
+}, {
+    x: 0,
+    y: -1070, // Ajout de l'animation sur l'axe Y
+    scale: 1.2, // Grossissement de 10% (taille à 110%)
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "5700px",  // Démarre après la première animation
+        end: "6300px",    // Garde la position pendant 200px
+        scrub: 0,  
+        markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+    }
+});
+
+gsap.fromTo(".T_shirt_Josy_1_", {
+    x: sreen_largeur * 0.29,
+    y: -22,
+    scale: 1 // Taille initiale à 100%
+}, {
+    x: 0,
+    y: 0, // Ajout de l'animation sur l'axe Y
+    scale: 1.2, // Grossissement de 10% (taille à 110%)
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4500px",  // Démarre après la première animation
+        end: "4900px",    // Garde la position pendant 200px
+        scrub: 0,  
+        markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+    }
+});
+
+
+
+window.addEventListener('resize', () => {
+        // Recalcule la largeur et met à jour la position x
+    sreen_largeur = window.innerWidth;
+
+    ScrollTrigger.refresh();
+      //  document.getElementById('scroll-position').textContent = `Scroll position: ${sreen_largeur}px`;
+
+ gsap.fromTo(".T_shirt_Josy_1_", {
+    x: sreen_largeur * 0.29,
+    y: -22,
+    scale: 1 // Taille initiale à 100%
+}, {
+    x: 0,
+    y: 0, // Ajout de l'animation sur l'axe Y
+    scale: 1.2, // Grossissement de 10% (taille à 110%)
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4500px",  // Démarre après la première animation
+        end: "4900px",    // Garde la position pendant 200px
+        scrub: 0,  
+        markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+    }
+});
+
+ScrollTrigger.refresh();
+//fin refresh 
+    });
+
+
+gsap.fromTo(".T_shirt_Josyimaginaire", {
+    x: 0,
+    y: 0,
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(-35deg)" // Ajout de la rotation initiale
+}, {
+    x: 0,
+    y: -1100, 
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(-35deg)", // Ajout de la rotation finale
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "5700px",  // Démarre après la première animation
+        end: "6300px",    // Fin de l'animation à 5200px
+        scrub: 0,  
+        markers: false // Pour désactiver les repères de démarrage et de fin
+    }
+});
+
+gsap.fromTo(".T_shirt_Josy_2", {
+    x: 0,
+    y: 0,
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(35deg)" // Ajout de la rotation initiale
+}, {
+    x: 0,
+    y: -1100, 
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(35deg)", // Ajout de la rotation finale
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "5700px",  // Démarre après la première animation
+        end: "6300px",    // Fin de l'animation à 5200px
+        scrub: 0,  
+        markers: false // Pour désactiver les repères de démarrage et de fin
+    }
+});
+
+
+
+//JOSYmaginaire
+gsap.fromTo(".T_shirt_Josyimaginaire", {
+    opacity: 0
+}, {
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4900px",
+        end: "4940px",
+        scrub: 0, 
+        markers: false
+    }
+});
+
+gsap.fromTo(".T_shirt_Josyimaginaire", {
+    x: 200,
+    y: -42,
+    scale: 0.7,
+    transform: "translateX(0) translateY(0) rotate(0deg)" // Ajout de la rotation initiale
+}, {
+    x: 0,
+    y: 0, // Pas de changement de position, seulement la rotation
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(-35deg)", // Ajout de la rotation finale
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4950px",  // Démarre après la première animation
+        end: "5300px",    // Fin de l'animation à 5200px
+        scrub: 0,  
+        markers: false // Pour désactiver les repères de démarrage et de fin
+    }
+});
+
+
+//Josy 2
+gsap.fromTo(".T_shirt_Josy_2", {
+    opacity: 0
+}, {
+    opacity: 1,
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4900px",
+        end: "4940px",
+        scrub: 0, 
+        markers: false
+    }
+});
+
+gsap.fromTo(".T_shirt_Josy_2", {
+    x: -200,
+    y: -42,
+    scale: 0.7,
+    transform: "translateX(0) translateY(0) rotate(0deg)" // Ajout de la rotation initiale
+}, {
+    x: 0,
+    y: 0, // Pas de changement de position, seulement la rotation
+    scale: 1,
+    transform: "translateX(0) translateY(0) rotate(35deg)", // Ajout de la rotation finale
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "4950px",  // Démarre après la première animation
+        end: "5300px",    // Fin de l'animation à 5200px
+        scrub: 0,  
+        markers: false // Pour désactiver les repères de démarrage et de fin
+    }
+});
+
+
+gsap.fromTo(".T_shirt_Josy_1", {
+        opacity : 0
+    }, {
+        opacity : 1,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "2100px top", // Déclenche à 2680px du haut de la page
+            end: "3300px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+gsap.fromTo(".T_shirt_Josy_1", {
+
+    x: () => -sreen_largeur,
+    y: 500,
+    scale: 1 // Taille initiale à 100%
+}, {
+    x: 0, // Déplacement horizontal sur 80% de la largeur de la fenêtre
+    y: 0, // Ajout de l'animation sur l'axe Y
+    scrollTrigger: {
+        trigger: document.body, // Déclencher par rapport au body
+        start: "2000px top", // Déclenche à 2680px du haut de la page
+        end: "4400px top",   // Fin à 4350px du haut de la page
+        scrub: 0,  
+        markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+    }
+});
+
+gsap.fromTo(".T_shirt_Josy_1", {
+        opacity : 1
+    }, {
+        opacity : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "4450px top", // Déclenche à 2680px du haut de la page
+            end: "4451px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+    
+    
+gsap.fromTo(".photodrone", {
+        y : 0,
+        opacity : 1,
+    }, {
+        y : -120,
+        opacity : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "0px top", // Déclenche à 2680px du haut de la page
+            end: "150px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+gsap.fromTo("photodrone_text", {
+        y : 1000
+    }, {
+        y : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "5800px top", // Déclenche à 2680px du haut de la page
+            end: "6200px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+;
+
+gsap.fromTo(".gallery2-container", {
+        opacity : 1
+    }, {
+        opacity : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "6795 top", // Déclenche à 2680px du haut de la page
+            end: "6820 top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+
+gsap.fromTo(".gallery2-container", {
+        y : 1000
+    }, {
+        y : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "6350px top", // Déclenche à 2680px du haut de la page
+            end: "6500px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+
+gsap.fromTo(".contact_form", {
+        y : 1000
+    }, {
+        y : 0,
+        scrollTrigger: {
+            trigger: document.body, // Déclencher par rapport au body
+            start: "6820px top", // Déclenche à 2680px du haut de la page
+            end: "7000px top",   // Fin à 4350px du haut de la page
+            scrub: 0,  
+            markers: false          // Pour voir les repères de démarrage et de fin (pour le debug)
+        }
+    });
+   
+
+
+   /*     // Sélectionnez l'image
+        const image = document.querySelector('.photodrone');
+        const text = document.getElementById('photodrone_text');
+
+// Paramètres pour une animation plus douce
+const duration = 1.5; // Durée de l'animation (en secondes)
+const easing = "power1.inOut"; // Effet de transition
+
+// Animation pour déplacer l'image vers la droite au survol
+image.addEventListener('mouseenter', () => {
+    gsap.to(image, { xPercent: -80, duration: duration, ease: easing });
+    gsap.to(text, { width: '25vw', duration: duration, ease: easing });
+});
+
+// Animation pour ramener l'image à sa position initiale à la sortie du survol
+image.addEventListener('mouseleave', () => {
+    gsap.to(image, { xPercent: -50, duration: duration, ease: easing });
+    gsap.to(text, { width: '45vw', duration: duration, ease: easing });
+});*/
+
+ //GSAP TEST
+ 
+
+
+ //FIN GSAP
+
+//fin thsirt josy
+
+		//Script galerie
+
+
+    slideIndex = 3;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        if (n == -1 && slideIndex == 3) {
+        }else{
+      showSlides(slideIndex += n);
+        }
+    }
+
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      if (n > slides.length) {
+        slideIndex = 3;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      let startIndex = slideIndex - 3 < 0 ? 0 : slideIndex - 3;
+      let endIndex = slideIndex + 2 > slides.length ? slides.length : slideIndex + 2;
+      for (let i = 0; i < slides.length; i++) {
+        if (i >= startIndex && i < endIndex) {
+          slides[i].style.display = "block";
+        } else {
+          slides[i].style.display = "none";
+        }
+      }
+    }
+
+    let scrollIndex2 = 0;
+
+function scrollGallery(direction) {
+    const gallery = document.querySelector('.gallery2');
+    const imageWidth = gallery.querySelector('img').offsetWidth + 10; // Inclut l'espacement
+    const visibleImages = 4; // Nombre d'images visibles
+    const totalImages = gallery.children.length; // Nombre total d'images
+    const maxIndex = Math.ceil(totalImages / visibleImages) - 1; // Indice maximum pour le défilement
+
+    // Calculez le nouvel indice de défilement
+    scrollIndex2 += direction;
+
+    // Assurez-vous que l'indice de défilement reste dans les limites
+    if (scrollIndex2 < 0) scrollIndex2 = 0;
+    if (scrollIndex2 > maxIndex) scrollIndex2 = maxIndex;
+
+    // Appliquez la transformation pour déplacer la galerie
+    gallery.style.transform = `translateX(-${scrollIndex2 * visibleImages * imageWidth}px)`;
+}
+        
+        //fin galerie
+
+
+        // Écouter l'événement de défilement
+window.addEventListener('scroll', function() {
+            // Calculer la hauteur de la barre de progression
+
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+            // Inverser le pourcentage pour que la barre se remplisse de haut en bas
+            let reverseScrollPercentage = 100 - scrollPercentage;
+
+            // Mettre à jour la hauteur de la barre de progression
+            document.getElementById('scrollBar').style.height = reverseScrollPercentage + '%';
+
+
+            // Mettre à jour l'opacité des points
+            updatePointsVisibility(scrollTop);
+        });
+
+
+
+ // Initialiser la barre de progression et la visibilité des points au chargement de la page
+window.dispatchEvent(new Event('scroll'));
+
+function updatePointsVisibility(scrollTop) {
+    // Tableau des points avec leurs positions en pixels
+    const points = [
+        { id: 'point100', position: 200 },
+        { id: 'point200', position: 2150 },
+        { id: 'point300', position: 4200 },
+        { id: 'point400', position: 4880 },
+        { id: 'point500', position: 5300 },
+        { id: 'point600', position: 6200 },
+        { id: 'point700', position: 6500 },
+        { id: 'point800', position: 7000 },
+        { id: 'point900', position: 9999 },
+        { id: 'point1000', position: 9999 }
+    ];
+
+            // Mettre à jour l'opacité de chaque point en fonction du pourcentage de défilement
+            points.forEach(point => {
+                const element = document.getElementById(point.id);
+                if (scrollTop >= point.position) {
+                    element.style.opacity = 1;
+                } else {
+                    element.style.opacity = 0;
+                }
+            });
+        }
+
+        // Initialiser la barre de progression au chargement de la page
+        window.dispatchEvent(new Event('scroll'));
+
+        // JavaScript pour basculer le menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+    if (document.body.classList.contains('show-menu')) {
+        // Si le menu est visible, on enlève la classe show-menu et on ajoute hide-menu
+        document.body.classList.remove('show-menu');
+        document.body.classList.add('hide-menu');
+    } else {
+        // Si le menu est caché, on enlève hide-menu et on ajoute show-menu
+        document.body.classList.remove('hide-menu');
+        document.body.classList.add('show-menu');
+    }
+});
+
+
+        // Sélectionne tous les boutons avec la classe 'button'
+        var buttons = document.querySelectorAll('.button');
+
+        // Ajoute un écouteur d'événements pour chaque bouton
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Récupère l'ID du bouton cliqué
+                var buttonId = this.id;
+                
+                // Supprime toutes les classes du modal et ajoute celle correspondante au bouton cliqué
+                var modalContainer = document.getElementById('modal-container');
+                modalContainer.className = ''; // Supprime toutes les classes
+                modalContainer.classList.add(buttonId);
+
+                // Ajoute la classe 'modal-active' au body
+                document.body.classList.add('modal-active');
+            });
+        });
+
+        // Ajoute un écouteur d'événements pour le modal pour le fermer au clic
+        var modalContainer = document.getElementById('modal-container');
+        modalContainer.addEventListener('click', function() {
+            // Ajoute la classe 'out' pour l'animation de fermeture
+            this.classList.add('out');
+
+            // Retire la classe 'modal-active' du body
+            document.body.classList.remove('modal-active');
+        });
+
+        // Empêche la fermeture du modal si l'on clique à l'intérieur
+        var modal = document.querySelector('.modal');
+        modal.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+        // Ajoute un écouteur d'événements pour le bouton de fermeture
+        var closeButton = document.querySelector('.close-button');
+        closeButton.addEventListener('click', function() {
+            // Ferme le modal en ajoutant la classe 'out'
+            modalContainer.classList.add('out');
+            document.body.classList.remove('modal-active');
+        });
+
+  
+function startTyping() {
+        // Texte à afficher progressivement
+        var text = "Soyez dans le top 5 des JOSYmots et gagner un bon de réduction";
+
+        // Sélection du conteneur où le texte sera affiché
+        var textContainer = document.getElementById('textContainer');
+
+        // Fonction pour afficher le texte progressivement
+        function typeWriter(text, i) {
+            if (i < text.length) {
+                textContainer.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(function() {
+                    typeWriter(text, i);
+                }, 50); // Délai entre chaque caractère (en millisecondes)
+            }
+        }
+
+        // Efface le contenu précédent du conteneur de texte
+        textContainer.innerHTML = '';
+
+        // Délai initial de 2 secondes avant de commencer à écrire
+        setTimeout(function() {
+            typeWriter(text, 0);
+        }, 2000);
+    }
+
+
+
+// Fonction pour ouvrir le modal avec l'animation "four"
+function open_carte() {
+    var modalContainer = document.getElementById('modal-container_carte');
+        // Retirer la classe "out" si elle est présente
+        modalContainer.classList.remove('out');
+    // Ajouter la classe "four" pour déclencher l'animation
+    modalContainer.classList.add('four');
+}
+
+// Fonction pour fermer le modal
+function close_carte() {
+    var modalContainer = document.getElementById('modal-container_carte');
+    // Ajouter la classe "out" pour déclencher l'animation de fermeture
+    modalContainer.classList.add('out');
+
+    // Attendre la fin de l'animation avant de cacher le modal
+    setTimeout(function() {
+        modalContainer.classList.remove('four', 'out');
+       // modalContainer.style.transform = 'scale(0)';
+    }, 500); // La durée de l'animation est de 500ms
+}
+
+// Ajouter des écouteurs d'événements aux boutons
+document.getElementById('four').addEventListener('click', open_carte);
+document.getElementById('close-modal').addEventListener('click', close_carte);  
+
+
+function sendForm(event) {
+            event.preventDefault(); // Empêcher la soumission du formulaire
+
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const errorDiv = document.getElementById('error');
+
+            fetch('send_email.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const popupOverlay = document.getElementById('popupOverlay');
+                    if (popupOverlay) {
+                        popupOverlay.style.display = 'flex';
+                    }
+                    form.reset(); // Effacer le formulaire
+                    errorDiv.textContent = ''; // Effacer le message d'erreur précédent
+                } else {
+                    displayErrorMessage(data); // Afficher le message d'erreur détaillé
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                errorDiv.textContent = 'Erreur lors de l\'envoi du message: ' + error.message;
+            });
+        }
+
+function displayErrorMessage(data) {
+            const errorDiv = document.getElementById('error');
+            if (errorDiv) {
+                if (data.details) {
+                    errorDiv.textContent = `Erreur : ${data.message}. Détails : ${data.details.message}`;
+                } else {
+                    errorDiv.textContent = `Erreur : ${data.message}`;
+                }
+            }
+        }
+
+function closePopup() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            if (popupOverlay) {
+                popupOverlay.style.display = 'none';
+            }
+        }
+
+
+                // Fonction pour défiler à 2150px
+function scrollToPosition_2() {
+            window.scrollTo({
+                top: 2150,
+                behavior: 'smooth' // défilement fluide
+            });
+        }
+
+function scrollToPosition_7() {
+            window.scrollTo({
+                top: 6500,
+                behavior: 'smooth' // défilement fluide
+            });
+        }
+
+function scrollToPosition_8() {
+            window.scrollTo({
+                top: 7000,
+                behavior: 'smooth' // défilement fluide
+            });
+        }
+
+
+function ToBoutique() {
+            window.location.href = 'https://josyte.wixstudio.io/josys/category/all-products';
+    }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Sélectionner les éléments
+    const overlay = document.getElementById('overlay');
+    const introImage = document.querySelector('.intro-image');
+    const verticalline = document.querySelector('.vertical-line');
+    
+
+    // Créer la timeline d'animation avec GSAP
+    const tl = gsap.timeline();
+
+    tl.to(verticalline, { 
+        duration: 0.5, 
+        height: '40vh', // Largeur de l'image à 30% de la largeur de la vue
+        opacity: 1, 
+        ease: 'power2.inOut' 
+    });
+    // Animation pour montrer l'image
+    tl.to(introImage, { 
+        duration: 1.2, 
+        left: '33%',
+        ease: 'power2.inOut' 
+    });
+
+    // Pause pour que l'image soit visible
+    tl.to({}, { duration: 1 });
+
+
+        // Animation pour montrer l'image
+        tl.to(introImage, { 
+        duration: 1.2, 
+        left: '-20%',
+        ease: 'power2.inOut' 
+    });
+
+    tl.to({}, { duration: 0.05 });
+
+    tl.to(verticalline, { 
+        duration: 0.5, 
+        height: '0vh', // Largeur de l'image à 30% de la largeur de la vue
+        opacity: 1, 
+        ease: 'power2.inOut' 
+    });
+
+    // Diminuer progressivement l'opacité de l'overlay pour révéler le contenu
+    tl.to(overlay, { 
+        duration: 0.8, 
+        opacity: 0, 
+        onComplete: () => {
+            // Masquer complètement l'overlay
+            overlay.style.display = 'none';
+            // Permettre le défilement
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+});
+
+
+let mots = [];
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let allData = [];
+
+    // Fonction pour récupérer les données depuis le fichier JSON
+    function fetchData() {
+        return fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                allData = data;
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données:', error));
+    }
+
+   
+   
+// Chargement des données depuis data.json
+    // Fonction pour charger les données depuis data.json
+// Fonction pour charger les données depuis motsJOSY.json
+function chargerDonnees() {
+    return fetch('motsJOSY.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Données chargées depuis motsJOSY.json:', data);
+            mots = data;
+            return mots; // Retourne les données pour les utiliser plus tard
+        })
+        .catch(error => {
+            console.error('Erreur de chargement des données:', error);
+            throw error; // Propage l'erreur pour la gérer en aval si nécessaire
+        });
+}
+
+
+
+// Appel de chargerDonnees au chargement de la page
+chargerDonnees()
+    .then(data => {
+        // Une fois les données chargées avec succès, vous pouvez continuer ici
+        console.log('Chargement des données terminé avec succès.');
+
+        // Définir les mots chargés dans une variable globale accessible
+        mots = data;
+    })
+    .catch(error => {
+        // Gérer l'erreur de chargement des données ici
+        console.error('Erreur lors du chargement des données:', error);
+    });
+
+    // Fonction pour sélectionner aléatoirement des éléments
+    function pickRandomElements(arr, count) {
+        if (count > arr.length) {
+            console.error('Le nombre demandé est supérieur au nombre d\'éléments dans le tableau.');
+            return [];
+        }
+        let shuffled = arr.slice();
+        shuffled.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    // Fonction pour actualiser les éléments toutes les 20 secondes
+    function updateRandomElements() {
+        const selectedData = pickRandomElements(allData, 10);
+        const container = document.getElementById('randomElements');
+        container.innerHTML = ''; // Effacer le contenu précédent
+
+        selectedData.forEach(item => {
+            const p = document.createElement('p');
+            p.textContent = item;
+            container.appendChild(p);
+        });
+    }
+
+       // Initialiser les données et mettre à jour les éléments
+       fetchData().then(() => {
+        updateRandomElements();
+        setInterval(updateRandomElements, 20000); // Actualiser toutes les 20 secondes
+    });
+
+});
+
+
+    // Appeler la fonction initiale au chargement de la page
+    updateRandomElements();
+
+    // Actualiser les éléments toutes les 20 secondes
+    setInterval(updateRandomElements, 20100); // 20 secondes en millisecondes (20 * 1000)
+
+
+
+////JEUX JOSY MOTS----------------------------------
+
+
+
+    // Appeler la fonction pour charger les données au chargement de la page
+   // chargerDonnees();
+
+    // Tableau des mots initialisé
+
+
+
+    /// TEST MOT JOSY
+
+function compterMot1() {
+
+  //  document.getElementById('Valider').addEventListener('click', function() {
+        const motTrouve = document.getElementById('motInput').value;
+         document.getElementById("resultat").textContent = '11';
+
+        if (motTrouve === '') {
+            document.getElementById('message').innerText = 'Veuillez entrer un mot.';
+            document.getElementById("resultat").textContent = 'Veuillez entrer un mot.';
+            return;
+        }
+
+        document.getElementById("resultat").textContent = '22';
+
+        // Envoyer la requête pour vérifier et mettre à jour le fichier JSON
+        fetch('/update-json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ mot: motTrouve })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('message').innerText = 'Le mot a été ajouté ou mis à jour avec succès !';
+                document.getElementById("resultat").textContent = 'Le mot a été ajouté ou mis à jour avec succès !';
+            } else {
+                document.getElementById('message').innerText = 'Erreur lors de la mise à jour du fichier.';
+                document.getElementById("resultat").textContent ='Erreur lors de la mise à jour du fichier.';
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            document.getElementById('message').innerText = 'Erreur de connexion avec le serveur.';
+            document.getElementById("resultat").textContent = 'Erreur de connexion avec le serveur.';
+        });
+   // });
+
+}
+
+    ///FIN TEST 
+   
+
+    // Fonction pour compter le mot saisi
+function compterMot() {
+
+     //   document.getElementById("textContainer").textContent = "3"
+        const motSaisi = document.getElementById("motInput").value.trim(); //.value.toLowerCase().trim();
+
+        // Recherche du mot dans la liste
+    //    document.getElementById("textContainer").textContent = "4"
+        const motTrouve = mots.find(item => (item.mot) === (motSaisi));
+     //   document.getElementById("textContainer").textContent = "5"
+
+        if (motTrouve) {
+            motTrouve.nombre++; // Incrémentation du compteur
+            document.getElementById("resultat").textContent = `Vous êtes la ${motTrouve.nombre}ème personne à penser à  JOSY${motSaisi}.`;
+
+            // Mettre à jour le fichier JSON avec la nouvelle valeur
+            mettreAJourJSON(motSaisi, motTrouve.nombre);
+
+        } else {
+            document.getElementById("resultat").textContent = `Le mot JOSY${motSaisi} n'est pas dans la liste.`;
+        }
+
+        // Effacer le champ de saisie après comptage
+        document.getElementById("motInput").value = "";
+    }
+/*
+     // Fonction pour mettre à jour le fichier JSON
+function mettreAJourJSON(updatedData) {
+            return fetch('/update-json', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la mise à jour du fichier JSON:', error);
+                document.getElementById("resultat").textContent = 'error sauvegarde JSON : ', error;
+            });
+        }
+*/
+
+
+// Fonction pour charger les données JSON existantes
+function chargerJSON() {
+    return fetch('motsJOSY.json')
+    .then(response => response.json())
+        .then(data => {
+            console.log('Données chargées depuis motsJOSY.json:', data);
+            mots = data;
+            return mots; // Retourne les données pour les utiliser plus tard
+        })
+        .catch(error => {
+            console.error('Erreur de chargement des données:', error);
+            throw error; // Propage l'erreur pour la gérer en aval si nécessaire
+        });
+}
+        // Fonction pour mettre à jour le fichier JSON
+function mettreAJourJSON(updated_mot,updated_nb ) {
+chargerJSON().then(data => {
+        // Cherche la ligne où "mot" est "diot"
+        const ligne = data.find(item => item.mot === updated_mot);
+        if (ligne) {
+            // Met à jour la colonne "nombre" à 2
+            ligne.nombre = updated_nb;
+
+            console.log("Le mot ", updated_mot, " est valide.");
+            // Envoie les données mises à jour au serveur pour les sauvegarder
+            return fetch('/update-json', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data) // Envoie les données JSON mises à jour
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la mise à jour du fichier JSON:', error);
+            });
+        } else {
+            console.log("Le mot ", updated_mot, " n'a pas été trouvé dans le fichier JSON.");
+        }
+    });
+}
+
+
+// Fonction pour sauvegarder les données mises à jour localement
+function sauvegarderDonneesLocalement() {
+    localStorage.setItem('motsJOSY', JSON.stringify(mots));
+    console.log('Données mises à jour localement.');
+}
+
+const express = require('express');
+const fs = require('fs');
+const app = express();
+
+app.use(express.json());
+
+// Route pour charger les données JSON
+app.get('/get-json', (req, res) => {
+    fs.readFile('../motsJOSY.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Erreur lors du chargement du fichier JSON');
+        }
+        res.json(JSON.parse(data)); // Envoie les données JSON au frontend
+    });
+});
+
+// Route pour mettre à jour le fichier JSON
+app.post('/update-json', (req, res) => {
+    const updatedData = req.body;
+
+    fs.writeFile('../motsJOSY.json', JSON.stringify(updatedData, null, 2), 'utf8', (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Erreur lors de la sauvegarde du fichier JSON');
+        }
+        res.json({ message: 'Fichier JSON mis à jour avec succès' });
+    });
+});
+
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Serveur en cours d'exécution sur le port ${port}`);
+});
+
+
+</script>
+
+    </div>
+
+</body>
+</html>

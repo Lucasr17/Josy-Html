@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Aléatoire des Mots</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .word {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            white-space: nowrap;
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fonction pour récupérer les données depuis le fichier JSON
+            function fetchData() {
+                return fetch('data.json')
+                    .then(response => response.json())
+                    .catch(error => console.error('Erreur lors de la récupération des données:', error));
+            }
+
+            // Fonction pour obtenir une valeur aléatoire dans une plage donnée
+            function getRandomValue(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            // Fonction pour placer les mots de manière aléatoire
+            function placeWords(words) {
+                const body = document.body;
+                const bodyWidth = body.clientWidth;
+                const bodyHeight = body.clientHeight;
+
+                words.forEach(word => {
+                    const span = document.createElement('span');
+                    span.className = 'word';
+                    span.textContent = word;
+
+                    const randomX = getRandomValue(0, bodyWidth);
+                    const randomY = getRandomValue(0, bodyHeight);
+                    const randomAngle = getRandomValue(-30, 40);
+                    const randomScale = getRandomValue(0.8, 1.2);
+
+                    span.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomAngle}deg) scale(${randomScale})`;
+
+                    body.appendChild(span);
+                });
+            }
+
+            // Initialiser les données et placer les mots
+            fetchData().then(words => {
+                placeWords(words);
+            });
+        });
+    </script>
+</body>
+</html>

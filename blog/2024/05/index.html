@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>May 2024 &#8211; My Website</title>
+<link rel="alternate" type="application/rss+xml" title="My Website &raquo; Feed" href="../../../feed.html" />
+<link rel="alternate" type="application/rss+xml" title="My Website &raquo; Comments Feed" href="../../../comments/feed/" />
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation</title>
+    <style>
+        /* Votre CSS actuel... */
+
+		
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+        .brick {
+           background-color: rgb(0,0,0); /* rgba(0, 0, 0, 0); /* Fond transparent */
+            width: 100%;
+            height: 30000px; /* Ajuster la hauteur à 2000px */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alignement du contenu en haut */
+            color: white;
+            font-size: 24px;
+            padding-top: 100px; /* Espacement de 100px en haut */
+            box-sizing: border-box; /* Inclure le padding dans la hauteur de la brique */
+            position: relative; /* Position relative pour le positionnement absolu du texte */
+        }
+        .text {
+            opacity: 1; /* Le texte est initialement visible */
+            transition: opacity 0.5s ease;
+            position: fixed; /* Position fixe pour les textes */
+        }
+        #text1 {
+          top: 200px; /* Placer le texte par défaut à 500px vers le bas */    
+          
+          /*left: 200px; /* Placer les textes à 20px de la gauche */
+        left: 19.8%; /* Centrer l'image horizontalement */
+      
+        }
+        #text2 {
+            top: 120px; /* Placer le deuxième texte à 300px vers le bas */
+              text-align: center;
+     
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+         
+        }
+
+        #txt_josy_histoire_amis {
+          position: fixed; /* Position fixe pour les textes */
+          right: 60%;
+            top: 140px; /* Placer le deuxième texte à 300px vers le bas */
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+         
+        }
+
+        
+        #text3 {
+             position: absolute; /* Position absolue pour le texte 3 */
+            top: 1300px; /* Placer le deuxième texte à 300px vers le bas */
+            opacity: 0; /* Le deuxième texte est initialement invisible */
+           left: 400px; /* Placer les textes à 20px de la gauche */
+       
+        }
+      
+        .image {
+            position: fixed; /* Position fixe pour l'image */
+            top: 80px; /* Placer l'image à 180px du haut */
+            left: 80%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 40%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+         .J {
+            position: absolute; /* Position fixe pour l'image */
+            top: 1400px; /* Placer l'image à 180px du haut */
+            left: 49.8%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            /*transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .J2 {
+            position: fixed; /* Position fixe pour l'image */
+            top: 250px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */
+          /*  transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .O {
+            position: absolute; /* Position fixe pour l'image */
+            top: 1600px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            /*transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .O2 {
+            position: fixed; /* Position fixe pour l'image */
+            top: 250px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */
+        /*    transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .S {
+            position: absolute; /* Position fixe pour l'image */
+            top: 1800px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            /*transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .S2 {
+            position: fixed; /* Position fixe pour l'image */
+            top: 250px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */
+        /*    transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .Y {
+            position: absolute; /* Position fixe pour l'image */
+            top: 2400px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            /*transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+        
+        .Y2 {
+            position: fixed; /* Position fixe pour l'image */
+            top: 250px; /* Placer l'image à 180px du haut */
+            left: 50%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 100%; /* Taille de l'image à 40% */
+            opacity: 0; /* L'image est initialement invisible */
+          /*  transition: opacity 1.5s ease; /* Transition d'opacité */
+        }
+	
+		
+        .J_txt {
+            position: fixed; /* Position fixe pour l'image */
+            top: 280px; /* Placer l'image à 180px du haut */
+            left: 29%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 20%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            filter: invert(1); /* Inverser les couleurs pour passer de noir à blanc */
+   
+        }
+
+        .O_txt {
+    position: fixed;
+    width: 20%;
+    opacity: 1;
+    filter: invert(1);
+    left: 55%;
+    transform: translateX(-50%);
+    top: calc(35% + 12vw); /* Ajustez cette formule selon vos besoins */
+}
+
+
+        .S_txt {
+            position: fixed; /* Position fixe pour l'image */
+            top: 34%; /* Placer l'image à 180px du haut */
+            left: 45%; /* Centrer l'image horizontalement */
+            transform: translate(-50%, -50%); /* Centrer l'image horizontalement et verticalement */
+            width: 16%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            filter: invert(1); /* Inverser les couleurs pour passer de noir à blanc */
+   
+        }
+
+        .Y_txt {
+            position: fixed; /* Position fixe pour l'image */
+            top: 230px; /* Placer l'image à 180px du haut */
+            left: 70%; /* Centrer l'image horizontalement */
+            transform: translateX(-50%); /* Centrer l'image horizontalement */
+            width: 20%; /* Taille de l'image à 40% */
+            opacity: 1; /* L'image est initialement invisible */
+            filter: invert(1); /* Inverser les couleurs pour passer de noir à blanc */
+   
+        }
+        
+
+		.T_shirt_Josy_1 {
+    position: fixed;
+    top: 3%;
+    left: -55%; /* Position initiale en dehors de l'écran à gauche */
+    width: 50%; /* Taille de l'image à 40% */
+    opacity: 1; /* L'image est initialement invisible */
+     
+    transform: translateX(0) translateY(0);
+  /*  transition: transform 1s ease-in-out;*/
+}
+        
+        
+            /* Style du bouton */
+    .btn {
+      background-color: black; /* Couleur de fond noire */
+      position: fixed; /* Position fixe pour l'image */ 
+      top: 250px; /* Placer l'image à 180px du haut */
+       left: 18%; /* Centrer l'image horizontalement */
+      color: white; /* Couleur du texte blanc */
+      padding: 5px 20px; /* Espacement intérieur du bouton */
+      text-decoration: none; /* Supprimer le soulignement par défaut du lien */
+       border: 2px solid white; /* Contour blanc de 2 pixels */
+     cursor: pointer; /* Afficher un curseur pointer lors du survol */
+      border-radius: 8px; /* Ajouter une bordure arrondie */
+           opacity: 1; /* L'image est initialement invisible */
+            transition: opacity 0.5s ease; /* Transition d'opacité */
+       
+    }
+
+    /* Style du bouton au survol */
+    .btn:hover {
+      background-color: #333; /* Couleur de fond légèrement plus sombre */
+    }
+    
+    
+    
+    /*gallery*/
+    
+     
+   .gallery {
+      position: fixed;
+      top: 210px; /* Position fixée à 500px à partir du haut de la page */
+        opacity: 0; /* L'image est initialement invisible */
+         
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height : 310px;
+      max-width: calc(100vw - 40px);
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: opacity 1.5s ease;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 33.33%;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      margin-top: 10px;
+    }
+
+    .prev,
+    .next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+    
+    /*fin gallery*/
+		
+        /* Barre de navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+                   background-color: rgba(0, 0, 0, 0.5); /* Fond transparent avec 50% d'opacité */
+     padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+		
+		.navbar-right {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+
+        .navbar .boutique-btn {
+            margin-right: 0;
+        }
+
+        /* Section Instagram */
+       /* .instagram-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }*/
+
+       /* .instagram-section img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }*/
+		
+		
+		/*JOSY*/
+
+		 *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0px;
+       background: transparent;
+    }
+
+    body2 {
+      background: #111;
+       background: transparent;
+     /* font-family: Arial, Helvetica, sans-serif;*/
+       font-family: Warsaw Gothic, sans-serif;
+      margin-top: -95px;
+    }
+
+    /* Verticale */
+
+    .slider-container2 {
+      max-width: 400px;
+      height: 200px;
+      margin-top: -105px;
+      overflow: hidden;
+      border: none;
+      background: transparent;
+    }
+
+    .slider2 {
+      height: 100%;
+      animation: slider2 20s infinite ease-in-out;
+    }
+
+    .slider2 p {
+      flex-shrink: 0;
+      padding: 100px 0;
+      width: 100%;
+      text-align: left;
+      font-size: 45px;
+      color: #f1f1f1;
+         margin-left: 105px; /* Décaler le texte de 100px vers la droite */
+          letter-spacing: 2px; /* Ajout de l'espace entre les lettres */
+        }
+
+
+    .slider2 p {
+      max-width: 100%;
+      max-height: 50%;
+      object-fit: contain;
+    }
+    
+    .image2{
+            position: fixed; /* Position fixe pour l'image */
+            top : 5px;
+            /*width: 40%; /* Taille de l'image à 40% */
+        width: 400px; /* Taille de l'image à 200px */
+            opacity: 100; /* L'image est initialement invisible */
+            transition: opacity 0.5s ease; /* Transition d'opacité */
+        }
+
+@keyframes slider2 {
+  0%, 5% {
+    transform: translateY(0);
+  }
+  10%, 15% {
+    transform: translateY(-100%);
+  }
+  20%, 25% {
+    transform: translateY(-200%);
+  }
+  30%, 35% {
+    transform: translateY(-300%);
+  }
+  40%, 45% {
+    transform: translateY(-400%);
+  }
+  50%, 55% {
+    transform: translateY(-500%);
+  }
+  60%, 65% {
+    transform: translateY(-600%);
+  }
+  70%, 75% {
+    transform: translateY(-700%);
+  }
+  80%, 85% {
+    transform: translateY(-800%);
+  }
+  90%, 95% {
+    transform: translateY(-900%);
+  }
+  100% {
+    transform: translateY(-1000%);
+  }
+}
+		
+		/**/
+		
+    </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>    
+</head>
+
+<body>
+
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <!-- Votre code HTML existant -->
+			<body2>
+
+  <!-- Vertical Slider -->
+  <div class="slider-container2">
+      <img src="https://static.wixstatic.com/media/091b9b_508a8104115e479b9c5d850b8b82d429~mv2.png" class="image2" alt="Image">
+    <div class="slider2">
+      <p>diot</p>
+      <p>nouï</p>
+      <p>golo</p>
+      <p>conique</p>
+      <p>gloo</p>
+      <p>dole</p>
+      <p>larant</p>
+      <p>vrogne</p>
+      <p>guane</p>
+      <p>lluminé</p>
+      <p>lrande</p>
+      <p>diot</p>
+    </div>
+  </div>
+
+</body2>
+
+			
+            <!-- Vous pouvez placer vos liens de navigation ici -->
+        </div>
+        <div class="navbar-right">
+            <a href="https://josyte.wixstudio.io/josys/category/all-products" class="boutique-btn">Boutique</a>
+        </div>
+    </div>
+
+    <!-- Votre code HTML existant... -->
+	
+    <div class="brick">
+        <div class="text" id="text1">Des jeux pour tous</div>
+        <div class="text" id="txt_josy_histoire_amis">JOSY... une histoire d'amis</div>
+        <div class="text" id="text2">La JOSY touch !</div>
+        <div class="text" id="text3">Dernier texte</div>
+        <img src="https://static.wixstatic.com/media/091b9b_5942d88c2bdf4786a81932d83e5f51c0~mv2.png" class="image" alt="Image">
+      
+        
+        <img src="https://static.wixstatic.com/media/091b9b_c9096c180dbc4efd97ad30ec0d4904e3~mv2.png" class="J" alt="Image">
+         <img src="https://static.wixstatic.com/media/091b9b_c9096c180dbc4efd97ad30ec0d4904e3~mv2.png" class="J2" alt="Image">
+        <img src="https://static.wixstatic.com/media/091b9b_b41391bded2b4fe180609f9ad4d1b242~mv2.png" class="O" alt="Image">
+            <img src="https://static.wixstatic.com/media/091b9b_b41391bded2b4fe180609f9ad4d1b242~mv2.png" class="O2" alt="Image">
+        <img src="https://static.wixstatic.com/media/091b9b_0429c71a44534c38aa4ca4f9942ee9af~mv2.png" class="S" alt="Image">
+          <img src="https://static.wixstatic.com/media/091b9b_0429c71a44534c38aa4ca4f9942ee9af~mv2.png" class="S2" alt="Image">
+        <img src="https://static.wixstatic.com/media/091b9b_2c107456862f4a548829b40f998ba86b~mv2.png" class="Y" alt="Image">
+         <img src="https://static.wixstatic.com/media/091b9b_2c107456862f4a548829b40f998ba86b~mv2.png" class="Y2" alt="Image">
+
+         <img src="https://static.wixstatic.com/media/091b9b_9194a62b9bc342de8281c8b2a669517e~mv2.png" class="J_txt" alt="Image">
+         <img src="https://static.wixstatic.com/media/091b9b_f21a1ba7f9694d9e9d3ae92894e0ff49~mv2.png" class="O_txt" alt="Image">
+         <img src="https://static.wixstatic.com/media/091b9b_b69b7e661bb348328825ffac91ea383b~mv2.png" class="S_txt" alt="Image">
+         <img src="https://static.wixstatic.com/media/091b9b_6387612c0f5c40d38150c6952d032eb0~mv2.png" class="Y_txt" alt="Image">
+		
+		 <img src="https://static.wixstatic.com/media/091b9b_3bdbfd96343041d48d7562b22539de94~mv2.png" class="T_shirt_Josy_1" alt="Image">
+		
+        <a href="https://josyte.wixstudio.io/josys/category/all-products" class="btn">Participer aux jeux</a>
+
+    <div class="gallery">
+    <div class="slides">
+      <div class="slide">
+        <img src="../Pictures/Mavic air 2/Team Ski Potes/image1.jpg" alt="Image 1">
+        <div class="caption">Texte de l'image 1</div>
+      </div>
+      <div class="slide">
+        <img src="https://static.wixstatic.com/media/091b9b_31a2765eb0df42e484cc6f362ff917ec~mv2.jpg" alt="Image 2">
+        <div class="caption">Texte de l'image 2</div>
+      </div>
+      <div class="slide">
+        <img src="../Pictures/Mavic air 2/Team Ski Potes/image3.jpg" alt="Image 3">
+        <div class="caption">Texte de l'image 3</div>
+      </div>
+      <div class="slide">
+        <img src="../Pictures/Mavic air 2/Team Ski Potes/image4.jpg" alt="Image 4">
+        <div class="caption">Texte de l'image 4</div>
+      </div>
+      <div class="slide">
+        <img src="../Pictures/Mavic air 2/Team Ski Potes/image5.jpg" alt="Image 5">
+        <div class="caption">Texte de l'image 5</div>
+      </div>
+      <div class="slide">
+        <img src="../Pictures/Mavic air 2/Team Ski Potes/image6.jpg" alt="Image 6">
+        <div class="caption">Texte de l'image 6</div>
+      </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+    </div>
+
+
+
+    <script>
+        // Ajoutez un gestionnaire d'événements pour réinitialiser l'opacité lorsque la page est au sommet du scroll
+        window.addEventListener('scroll', function() {
+            var text1 = document.getElementById('text1');
+            var text2 = document.getElementById('text2');
+            var txt_josy_histoire_amis = document.getElementById('txt_josy_histoire_amis');
+            var text3 = document.getElementById('text3');
+            var image = document.querySelector('.image');
+            var btn = document.querySelector('.btn');
+            var J = document.querySelector('.J');
+            var J2 = document.querySelector('.J2');
+            var O = document.querySelector('.O');
+            var O2 = document.querySelector('.O2');
+            var S = document.querySelector('.S');
+            var S2 = document.querySelector('.S2');
+            var Y = document.querySelector('.Y');
+            var Y2 = document.querySelector('.Y2');
+
+            var J_txt = document.querySelector('.J_txt');
+            var O_txt = document.querySelector('.O_txt');
+            var S_txt = document.querySelector('.S_txt');
+            var Y_txt = document.querySelector('.Y_txt');
+            
+            var gallery = document.querySelector('.gallery');
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			var T_shirt_Josy_1 = document.querySelector('.T_shirt_Josy_1');
+            
+			
+            
+            //Début
+            if (scrollTop <= 30) {
+                text1.style.opacity = "1";
+            } else {
+                text1.style.opacity = "0";
+            }
+            
+            if (scrollTop <= 31) {
+                btn.style.opacity = "1";
+            } else {
+                btn.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 0 && scrollTop <= 35) {
+                image.style.opacity = "1";
+            } else {
+                image.style.opacity = "0";
+            }
+            
+            //galerie histoire josy
+
+            if (scrollTop >= 180 && scrollTop <= 500) {
+              txt_josy_histoire_amis.style.opacity = "1";
+            } else {
+              txt_josy_histoire_amis.style.opacity = "0";
+            }
+
+             if (scrollTop >= 200 && scrollTop <= 500) {
+                gallery.style.opacity = "1";
+            } else {
+                gallery.style.opacity = "0";
+            }
+            
+            //Josy touch
+            
+            if (scrollTop >= 540 && scrollTop <= 2000) {
+                text2.style.opacity = "1";
+            } else {
+                text2.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 200 && scrollTop <= 950) {
+                J.style.opacity = "1";
+            } else {
+                J.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 950 && scrollTop <= 3500) {
+                J2.style.opacity = "1";
+            } else {
+                J2.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 700 && scrollTop <= 1415) {
+                O.style.opacity = "1";
+            } else {
+                O.style.opacity = "0";
+            }
+             if (scrollTop >= 1415 && scrollTop <= 3500) {
+                O2.style.opacity = "1";
+            } else {
+                O2.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 800 && scrollTop <= 1600) {
+                S.style.opacity = "1";
+            } else {
+                S.style.opacity = "0";
+            }
+			
+            if (scrollTop >= 1600 && scrollTop <= 3500) {
+                S2.style.opacity = "1";
+            } else {
+                S2.style.opacity = "0";
+            }
+            
+            if (scrollTop >= 1300 && scrollTop <= 2200) {
+                Y.style.opacity = "1";
+            } else {
+                Y.style.opacity = "0";
+            }
+             if (scrollTop >= 2200 && scrollTop <= 3500) {
+                Y2.style.opacity = "1";
+            } else {
+                Y2.style.opacity = "0";
+            }
+            
+			
+            
+            //autres
+            
+             
+             if (scrollTop >= 1100 && scrollTop <= 2000) {
+                text3.style.opacity = "0";
+            } else {
+                text3.style.opacity = "0";
+            }
+        });
+        
+	
+//t shirt josy
+
+gsap.fromTo(".T_shirt_Josy_1", {
+    x: 0,
+    y: 0
+}, {
+    scrollTrigger: {
+        trigger: ".T_shirt_Josy_1",
+        start: "2680px top",
+        end: "4350px top",
+        scrub: 0,  
+        markers: false     // Pour voir les repères de démarrage et de fin (pour le debug)
+            
+    },
+    x: 1580,
+    y: 280 // Ajout de l'animation sur l'axe Y
+});
+
+ 
+ //GSAP TEST
+ 
+
+
+ //FIN GSAP
+
+//fin thsirt josy
+
+		//Script galerie
+        
+   let slideIndex = 3;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      if (n > slides.length) {
+        slideIndex = 3;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      let startIndex = slideIndex - 3 < 0 ? 0 : slideIndex - 3;
+      let endIndex = slideIndex + 2 > slides.length ? slides.length : slideIndex + 2;
+      for (let i = 0; i < slides.length; i++) {
+        if (i >= startIndex && i < endIndex) {
+          slides[i].style.display = "block";
+        } else {
+          slides[i].style.display = "none";
+        }
+      }
+    }
+        
+        //fin galerie
+        
+        
+        //script vitesse scroll
+
+window.addEventListener('scroll', function() {
+      var element = document.getElementById('text3');
+      var scrollPosition = window.scrollY;
+      // Définir la vitesse de défilement désirée (plus la valeur est élevée, plus l'élément descend lentement)
+      var speed = 1.2;
+      // Déplacer l'élément verticalement en fonction du défilement
+      element.style.top = (200 + scrollPosition * speed) + 'px';
+    });
+
+//
+        
+    </script>
+	
+
+    <div class="instagram-section">
+        <a href="https://www.instagram.com/" target="_blank">
+            <img src="https://static.wixstatic.com/media/091b9b_a9215b4d1c0a470aa70b99140a91aa22~mv2.png" alt="Instagram">
+        </a>
+    </div>
+
+    <script>
+        // Votre script JavaScript existant...
+    </script>
+</body>
+</html>
+<link rel='stylesheet' id='this-style-css'  href='../../../css/2-style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sitemush-fonts-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='../../../css/1-genericons.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sitemush-style-css'  href='../../../css/3-style.css' type='text/css' media='all' />
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='sitemush-ie-css'  href='../../../css/1-ie.css' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='sitemush-ie8-css'  href='../../../css/1-ie8.css' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='sitemush-ie7-css'  href='../../../css/1-ie7.css' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='mpce-venobox-css-css'  href='../../../css/1-venobox.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mpce-insites-css-css'  href='../../../css/1-cookieconsent.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mpce-theme-css'  href='../../../css/1-theme.css' type='text/css' media='all' />
+<style id='mpce-theme-inline-css' type='text/css'>
+.sm-row-fixed-width{max-width:1170px;}
+</style>
+<link rel='stylesheet' id='mpce-bootstrap-grid-css'  href='../../../css/1-bootstrap-grid.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mpce-font-awesome-css'  href='../../../css/1-font-awesome.min.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../js/1-jquery.js'></script>
+<script type='text/javascript' src='../../../js/1-jquery-migrate.min.js'></script>
+<script type='text/javascript' src='../../../js/1-counter.js'></script>
+<script type='text/javascript' src='../../../js/1-main.js'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='../../../js/1-html5.js'></script>
+<![endif]-->
+<script type='text/javascript' src='../../../js/1-venobox.min.js'></script>
+<script type='text/javascript' src='../../../js/1-cookieconsent.min.js'></script>
+<link rel='https://api.w.org/' href='../../../szp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../../xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../../site-inc/wlwmanifest.xml" /> 
+<meta name="generator" content="SitePad" />
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		</head>
+
+<body class="archive date hfeed">
+<div id="page" class="site container-fluid">
+	<div class="site-inner">
+			
+		
+		<header id="masthead" class="site-header" role="banner"><div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right padding_row top_header">
+<div class="sm-span6 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj">
+<p><span style="color: #ffffff;">HOT LINE : +880-1911-623-458, +8801-717-682-743</span></p>
+</div>
+</div>
+<div class="sm-span6 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj topbar_text">
+<p style="text-align: right;"><span style="color: #ffffff;">Reviews | Warranty | Contact</span></p>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right padding_row header_row">
+<div class="sm-span4 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-service-box-obj smue-service-box-text-heading-float smue-service-box-basic header_details">
+<div class="smue-service-box-icon-section smue-service-box-small-icon"  style=" padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
+<div class="smue-service-box-icon-holder smue-service-box-icon-holder-square"  style=" font-size: 26px; background-color: #000000; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;"><i class="fa fa-envelope mp-text-color-default" ></i></div>
+</div>
+<div class="smue-service-box-text-heading-wrapper">
+<div class="smue-service-box-heading-section">
+<h6 style=" color: ;">Mail Us @</h6>
+</div>
+<div class="smue-service-box-content-section">
+<p>info@factory.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sm-span4 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-service-box-obj smue-service-box-text-heading-float smue-service-box-basic header_details">
+<div class="smue-service-box-icon-section smue-service-box-small-icon"  style=" padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
+<div class="smue-service-box-icon-holder smue-service-box-icon-holder-square"  style=" font-size: 26px; background-color: #000000; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;"><i class="fa fa-trophy mp-text-color-default" ></i></div>
+</div>
+<div class="smue-service-box-text-heading-wrapper">
+<div class="smue-service-box-heading-section">
+<h6 style=" color: ;">Great Industrial</h6>
+</div>
+<div class="smue-service-box-content-section">
+<p>Solution Provider</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sm-span4 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-service-box-obj smue-service-box-text-heading-float smue-service-box-basic header_details">
+<div class="smue-service-box-icon-section smue-service-box-small-icon"  style=" padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
+<div class="smue-service-box-icon-holder smue-service-box-icon-holder-square"  style=" font-size: 26px; background-color: #000000; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;"><i class="fa fa-globe mp-text-color-default" ></i></div>
+</div>
+<div class="smue-service-box-text-heading-wrapper">
+<div class="smue-service-box-heading-section">
+<h6 style=" color: ;">123, Main Street</h6>
+</div>
+<div class="smue-service-box-content-section">
+<p>Sydney, Australia</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right header_lower_row">
+<div class="sm-span3 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right site_logo">
+<div class="smue-szp_site_title smue-ce-child-detector site_title smue-text-align-left"><div class="site-title-container"  ><a href="../../../index.html" ><img src="../../../images/1-logo.png" style=" width: 45px; height: 45px; vertical-align: middle; margin-right: 10px;" ></a><a href="../../../index.html"  style=" color: rgb(255, 255, 255);">My Website</a></div></div>
+</div>
+<div class="sm-span9 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right menubar">
+<div class="smue-szp_primary_nav smue-ce-child-detector floatright"><i class="fa fa-bars responsive_bar" id="menu-toggle" aria-expanded="false"> </i>  <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-navigation social-navigation">Menu</button>
+	<div id="site-header-menu" class="site-header-menu">
+		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu"><div class="menu-header-menu-container"><ul id="menu-header-menu" class="primary-menu"><li id="menu-item-12" class="home menu-item menu-item-type-post_type menu-item-object-page menu-item-12" style="  " ><a href="../../../index.html" style="  " >Home</a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13" style="  " ><a href="../../../about.html" style="  " >About</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-14" style="  " ><a href="../../../blog.html" style="  " >Blog</a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15" style="  " ><a href="../../../contact.html" style="  " >Contact</a></li>
+<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16" style="  " ><a href="../../../services.html" style="  " >Services</a></li>
+</ul></div></nav><!-- .main-navigation -->
+	</div><!-- .site-header-menu --></div><style>@media screen and (min-width:768px) { .site-header-menu .main-navigation .primary-menu > li {} .site-header-menu .main-navigation a{} .site-header-menu .main-navigation .sub-menu a { color: rgb(255, 255, 255) !important; background: rgb(73, 68, 69) !important;} .site-header-menu .main-navigation .current-menu-item > a { color: rgb(255, 255, 255) !important; background: rgb(255, 206, 84) !important;} .site-header-menu .main-navigation li:hover > a {} .site-header-menu .main-navigation .primary-menu > .menu-item-has-children > a::after {} .site-header-menu .main-navigation ul ul .menu-item-has-children > a::after {} } @media screen and (max-width:767px) { .site-header-menu .main-navigation a, .site-header-menu .main-navigation .sub-menu a {} i.responsive_bar{} .site-header-menu .main-navigation li.current-menu-item > a {} .site-header-menu .main-navigation a:hover, .site-header-menu .main-navigation .primary-menu li a:hover {} .site-header-menu {} .dropdown-toggle:after {} }</style><script type="text/javascript">
+		
+		jQuery(document).ready(function(){
+			
+			var maxwidth = 0;
+			var menu_len = jQuery("div.smue-szp_primary_nav").length; // number of menus added
+			
+			jQuery( "ul.primary-menu > li" ).each(function() {
+				maxwidth += jQuery(this).width(); // Find total width
+			});
+			
+			if(menu_len){
+				maxwidth /= menu_len; // Divide the total width with number of menus
+			}
+			
+			jQuery( ".smue-szp_primary_nav" ).css( "maxWidth", maxwidth + "px" ); // Assign the maxWidth
+		});		
+		</script>
+</div>
+</div>
+
+		</header><!-- .site-header -->
+		<script language="javascript" type="text/javascript">
+			var cur_page_data = {pageid:"10", pagename:"default-post"};
+			var cur_themes_url = "http://josy.yj.lu/site-data/themes";
+		</script>
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">Month: May 2024</h1>			</header><!-- .page-header -->
+
+			
+<article id="post-10" class="post-10 post type-post status-publish format-standard hentry">
+	<header class="entry-header">
+		
+		<h2 class="entry-title"><a href="../../../blog/default-post.html" rel="bookmark">Default Blog Post</a></h2>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>This is a default blog post. Feel free to delete it.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt='' src='http://0.gravatar.com/avatar/3bb59e07fa281763109c72b1e508bedb?s=49&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3bb59e07fa281763109c72b1e508bedb?s=98&amp;d=mm&amp;r=g 2x' class='avatar avatar-49 photo' height='49' width='49' /><span class="screen-reader-text">Author </span> <span style="font-size: 15px; cursor:pointer">admin</span></span></span><span class="posted-on"><i class="fa fa-calendar" aria-hidden="true"></i><span class="screen-reader-text">Posted on </span><a href="../../../blog/default-post.html" rel="bookmark"><time class="entry-date published updated" datetime="2024-05-23T08:30:54+00:00">May 23, 2024</time></a></span><span class="comments-link"></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+		</div><!-- .site-content -->
+		
+		
+		<footer id="colophon" class="site-footer" role="contentinfo"><div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right padding_row footer_row">
+<div class="sm-span3 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-span12 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj">
+<h5><span style="color: #ffce54;">OUR AGENTS</span></h5>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right agent_inner">
+<div class="sm-span4 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-image-obj smue-text-align-left"><img src="../../../images/1-staff1.jpg" class="smue-image-obj-basic footer_img sme-dsbl-margin-left sme-dsbl-margin-right sme-dsbl-margin-top sme-dsbl-margin-bottom" /></div>
+</div>
+<div class="sm-span8 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-code-obj agent_details">
+<h6><span style="color: #ffffff;"><strong>Alex John</strong></span></h6>
+<p><i class="fa fa-phone" style="color: #ffce54;"></i><span style="color: #eeeeee;"> +91 99876657890</span></p>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right agent_inner">
+<div class="sm-span4 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-image-obj smue-text-align-left"><img src="../../../images/1-staff2.jpg" class="smue-image-obj-basic footer_img sme-dsbl-margin-left sme-dsbl-margin-right sme-dsbl-margin-top sme-dsbl-margin-bottom" /></div>
+</div>
+<div class="sm-span8 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-code-obj agent_details">
+<h6><span style="color: #ffffff;"><strong>Gracee Alexander</strong></span></h6>
+<p><i class="fa fa-phone" style="color: #ffce54;"></i><span style="color: #eeeeee;"> +91 99223357890</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sm-span3 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-span12 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj">
+<h5><span style="color: #ffce54;">SERVICES</span></h5>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-span12 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-list-obj smue-list-obj-basic footer_link">
+<ul class="smue-list-type-icon">
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Painting
+</li>
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Mining Engg.
+</li>
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Welding Engg.
+</li>
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Chemical Engg.
+</li>
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Automobile Engg.
+</li>
+<li style="color:rgb(238, 238, 238);"><i  style="color:rgb(238, 238, 238);" class="fa fa-caret-right"></i>Construction Engg.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sm-span3 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj">
+<h5><span style="color: #ffce54;">LOCATIONS</span></h5>
+<p>&nbsp;</p>
+<p><span style="color: #ffffff;">LOCATION ONE</span></p>
+<p><span style="color: #eeeeee;">Hayden street 141 sydney road, New South Wales, Australia</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #ffffff;">LOCATION TWO<br />
+<span style="color: #eeeeee;"> Hayden street 141 sydney road, New South Wales, Australia</span></span></p>
+</div>
+</div>
+<div class="sm-span3 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-text-obj">
+<h5><span style="color: #ffffff;"><span style="color: #ffce54;">CONTACT US</span><br />
+</span></h5>
+<p>&nbsp;</p>
+<p><span style="color: #ffffff;">Via MAIL:<br />
+</span></p>
+<p><span style="color: #eeeeee;">info@domainname.com</span></p>
+<p><span style="color: #eeeeee;">support@domainname.com</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #ffffff;">Via PHONE:<br />
++0987654321<br />
+</span></p>
+<p><span style="color: #eeeeee;">+065 588-655-310</span></p>
+</div>
+</div>
+</div>
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right social_btn_row">
+<div class="sm-span12 smue-clmn  sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="sm-row-fluid smue-row sme-dsbl-margin-left sme-dsbl-margin-right social_inner_row">
+<div class="sm-span4 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right  smue-empty sm-hidden-phone">
+</div>
+<div class="sm-span1 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-ce-icon-obj social_btn smue-ce-icon-shape-square  smue-ce-icon-size-custom  smue-ce-icon-align-center  sme-dsbl-padding-left sme-dsbl-padding-right sme-dsbl-margin-top sme-dsbl-margin-bottom smue-need-animate" style=" min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em; font-size: 16.000000px;" data-animation="bottom-to-top"><a class="smue-ce-icon-link" href="https://twitter.com" target="_self">
+<div style="background-color:; border-color: transparent; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;" class="smue-ce-icon-bg"><span class="fa fa-twitter smue-ce-icon-preview" style="color:rgb(255, 255, 255)"></span></div>
+<p></a></div>
+</div>
+<div class="sm-span1 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-ce-icon-obj social_btn smue-ce-icon-shape-square  smue-ce-icon-size-custom  smue-ce-icon-align-center  sme-dsbl-padding-left sme-dsbl-padding-right sme-dsbl-margin-top sme-dsbl-margin-bottom smue-need-animate" style=" min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em; font-size: 16.000000px;" data-animation="bottom-to-top"><a class="smue-ce-icon-link" href="https://www.facebook.com" target="_self">
+<div style="background-color:; border-color: transparent; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;" class="smue-ce-icon-bg"><span class="fa fa-facebook smue-ce-icon-preview" style="color:rgb(255, 255, 255)"></span></div>
+<p></a></div>
+</div>
+<div class="sm-span1 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-ce-icon-obj social_btn smue-ce-icon-shape-square  smue-ce-icon-size-custom  smue-ce-icon-align-center  sme-dsbl-padding-left sme-dsbl-padding-right sme-dsbl-margin-top sme-dsbl-margin-bottom smue-need-animate" style=" min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em; font-size: 16.000000px;" data-animation="bottom-to-top"><a class="smue-ce-icon-link" href="#" target="_self">
+<div style="background-color:; border-color: transparent; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;" class="smue-ce-icon-bg"><span class="fa fa-instagram smue-ce-icon-preview" style="color:rgb(255, 255, 255)"></span></div>
+<p></a></div>
+</div>
+<div class="sm-span1 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">
+<div class="smue-ce-icon-obj social_btn smue-ce-icon-shape-square  smue-ce-icon-size-custom  smue-ce-icon-align-center  sme-dsbl-padding-left sme-dsbl-padding-right sme-dsbl-margin-top sme-dsbl-margin-bottom smue-need-animate" style=" min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em; font-size: 16.000000px;" data-animation="bottom-to-top"><a class="smue-ce-icon-link" href="#" target="_self">
+<div style="background-color:; border-color: transparent; min-height: 2.000000em; height: 2.000000em; min-width: 2.000000em; width: 2.000000em;" class="smue-ce-icon-bg"><span class="fa fa-linkedin smue-ce-icon-preview" style="color:rgb(255, 255, 255)"></span></div>
+<p></a></div>
+</div>
+<div class="sm-span4 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right  smue-empty sm-hidden-phone">
+</div>
+</div>
+</div>
+</div>
+
+		</footer><!-- .site-footer -->	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+<script type='text/javascript' src='../../../js/1-skip-link-focus-fix.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../../js/1-functions.js'></script>
+<script type='text/javascript' src='../../../js/1-szp-embed.min.js'></script>
+<script type='text/javascript' src='../../../js/1-jquery.waypoints.min.js'></script>
+<script type='text/javascript' src='../../../js/1-mp-waypoint-animations.js'></script>
+<style id="smue-ce-private-styles" data-posts="" type="text/css"></style></body>
+</html>
